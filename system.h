@@ -1,0 +1,1 @@
+unsigned int clavier_a_traiter;
