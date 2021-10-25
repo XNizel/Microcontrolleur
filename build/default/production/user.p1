@@ -75,6 +75,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "11131
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"11492
+[v _TRISG `Vuc ~T0 @X0 0 e@3992 ]
 "8614
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 "8854
@@ -9268,6 +9270,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
 [; ;user.h: 5: void Init(void);
 [; ;user.h: 6: void Tempo(int val);
+[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
 "5 user.c
 [v _Init `(v ~T0 @X0 1 ef ]
 {
@@ -9307,71 +9310,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 21: TRISA = 0x01;
 "21
 [e = _TRISA -> -> 1 `i `uc ]
-[; ;user.c: 22: PORTD = 0;
+[; ;user.c: 22: TRISG = 0x00;
 "22
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;user.c: 23: PORTE = 0;
+[e = _TRISG -> -> 0 `i `uc ]
+[; ;user.c: 23: PORTD = 0;
 "23
-[e = _PORTE -> -> 0 `i `uc ]
-[; ;user.c: 24: PORTH = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+[; ;user.c: 24: PORTE = 0;
 "24
+[e = _PORTE -> -> 0 `i `uc ]
+[; ;user.c: 25: PORTH = 0;
+"25
 [e = _PORTH -> -> 0 `i `uc ]
-[; ;user.c: 27: RCONbits.IPEN = 1;
-"27
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;user.c: 28: INTCONbits.GIE = 1;
+[; ;user.c: 28: RCONbits.IPEN = 1;
 "28
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;user.c: 29: INTCONbits.PEIE = 1;
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;user.c: 29: INTCONbits.GIE = 1;
 "29
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;user.c: 30: INTCONbits.INT0IE = 1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;user.c: 30: INTCONbits.PEIE = 1;
 "30
-[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;user.c: 31: INTCON2bits.INTEDG0 = 0;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;user.c: 31: INTCONbits.INT0IE = 1;
 "31
-[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;user.c: 32: INTCONbits.INT0F = 0;
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;user.c: 32: INTCON2bits.INTEDG0 = 0;
 "32
-[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-[; ;user.c: 33: }
+[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
+[; ;user.c: 33: INTCONbits.INT0F = 0;
 "33
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+[; ;user.c: 34: }
+"34
 [e :UE 1238 ]
 }
-"37
+"38
 [v _Tempo `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;user.c: 36: void Tempo (int val)
-[; ;user.c: 37: {
+[; ;user.c: 37: void Tempo (int val)
+[; ;user.c: 38: {
 [e :U _Tempo ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"38
-[v _i `i ~T0 @X0 1 a ]
-[; ;user.c: 38: int i;
-[; ;user.c: 39: for(i=0; i<val; i++)
 "39
+[v _i `i ~T0 @X0 1 a ]
+[; ;user.c: 39: int i;
+[; ;user.c: 40: for(i=0; i<val; i++)
+"40
 {
 [e = _i -> 0 `i ]
 [e $U 1243  ]
-"40
-[e :U 1240 ]
-[; ;user.c: 40: {
-{
-[; ;user.c: 41: _delay((unsigned long)((1)*(11059200/4000.0)));
 "41
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 11059200 `l `d .4000.0 `ul ]
+[e :U 1240 ]
+[; ;user.c: 41: {
+{
+[; ;user.c: 42: _delay((unsigned long)((1)*(11059200/4000.0)));
 "42
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 11059200 `l `d .4000.0 `ul ]
+"43
 }
-"39
+"40
 [e ++ _i -> 1 `i ]
 [e :U 1243 ]
 [e $ < _i _val 1240  ]
 [e :U 1241 ]
-"42
-}
-[; ;user.c: 42: }
-[; ;user.c: 43: }
 "43
+}
+[; ;user.c: 43: }
+[; ;user.c: 44: }
+"44
 [e :UE 1239 ]
+}
+"54
+[v _map `(l ~T0 @X0 1 ef5`l`l`l`l`l ]
+{
+[; ;user.c: 54: long map(long x, long in_min, long in_max, long out_min, long out_max) {
+[e :U _map ]
+[v _x `l ~T0 @X0 1 r1 ]
+[v _in_min `l ~T0 @X0 1 r2 ]
+[v _in_max `l ~T0 @X0 1 r3 ]
+[v _out_min `l ~T0 @X0 1 r4 ]
+[v _out_max `l ~T0 @X0 1 r5 ]
+[f ]
+[; ;user.c: 55: return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+"55
+[e ) + / * - _x _in_min - _out_max _out_min - _in_max _in_min _out_min ]
+[e $UE 1244  ]
+[; ;user.c: 56: }
+"56
+[e :UE 1244 ]
 }

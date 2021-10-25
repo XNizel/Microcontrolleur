@@ -11926,6 +11926,7 @@ extern void _delay3(unsigned char);
 # 5 "user.h"
 void Init(void);
 void Tempo(int val);
+long map(long x, long in_min, long in_max, long out_min, long out_max);
 
 # 17 "LCD.h"
 extern far unsigned char LCD_DATA @ 0x1A0002;

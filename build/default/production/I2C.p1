@@ -1,29 +1,80 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"5 user.h
-[v _Init `(v ~T0 @X0 0 ef ]
-"22 LCD.h
-[v _init_LCD `(v ~T0 @X0 0 ef ]
-"3 I2C.h
-[v _I2C_Init `(v ~T0 @X0 0 ef ]
-"9 get_clav.h
-[v _get_clav `(v ~T0 @X0 0 ef ]
-"23 LCD.h
-[v _clear_LCD `(v ~T0 @X0 0 ef ]
-"24
-[v _home_LCD `(v ~T0 @X0 0 ef ]
-"28
-[v _INT_to_ASCII `(v ~T0 @X0 0 ef1`i ]
-"5 CAN.h
-[v _get_CAN `(v ~T0 @X0 0 ef ]
-"4 I2C.h
-[v _I2C_Write `(v ~T0 @X0 0 ef1`i ]
-"7 user.h
-[v _map `(l ~T0 @X0 0 ef5`l`l`l`l`l ]
-"9443 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _PORTG `Vuc ~T0 @X0 0 e@3974 ]
-"6 user.h
-[v _Tempo `(v ~T0 @X0 0 ef1`i ]
+"15811 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
+[v _SSP1STAT `Vuc ~T0 @X0 0 e@4039 ]
+"15532
+[v _SSP1CON1 `Vuc ~T0 @X0 0 e@4038 ]
+[s S951 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S951 . SSPM CKP SSPEN SSPOV WCOL ]
+[s S952 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S952 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+[s S953 :4 `uc 1 :1 `uc 1 ]
+[n S953 . . CKP1 ]
+[s S954 :5 `uc 1 :1 `uc 1 ]
+[n S954 . . SSPEN1 ]
+[s S955 :1 `uc 1 ]
+[n S955 . SSPM01 ]
+[s S956 :1 `uc 1 :1 `uc 1 ]
+[n S956 . . SSPM11 ]
+[s S957 :2 `uc 1 :1 `uc 1 ]
+[n S957 . . SSPM21 ]
+[s S958 :3 `uc 1 :1 `uc 1 ]
+[n S958 . . SSPM31 ]
+[s S959 :6 `uc 1 :1 `uc 1 ]
+[n S959 . . SSPOV1 ]
+[s S960 :7 `uc 1 :1 `uc 1 ]
+[n S960 . . WCOL1 ]
+[u S950 `S951 1 `S952 1 `S953 1 `S954 1 `S955 1 `S956 1 `S957 1 `S958 1 `S959 1 `S960 1 ]
+[n S950 . . . . . . . . . . . ]
+"15588
+[v _SSP1CON1bits `VS950 ~T0 @X0 0 e@4038 ]
+"15113
+[v _SSP1CON2 `Vuc ~T0 @X0 0 e@4037 ]
+"16468
+[v _SSP1ADD `Vuc ~T0 @X0 0 e@4040 ]
+[s S919 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S919 . SEN RSEN PEN RCEN ACKEN ACKDT ACKSTAT GCEN ]
+[s S920 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S920 . . ADMSK1 ADMSK2 ADMSK3 ADMSK4 ADMSK5 ]
+[s S921 :5 `uc 1 :1 `uc 1 ]
+[n S921 . . ACKDT1 ]
+[s S922 :4 `uc 1 :1 `uc 1 ]
+[n S922 . . ACKEN1 ]
+[s S923 :6 `uc 1 :1 `uc 1 ]
+[n S923 . . ACKSTAT1 ]
+[s S924 :1 `uc 1 :1 `uc 1 ]
+[n S924 . . ADMSK11 ]
+[s S925 :2 `uc 1 :1 `uc 1 ]
+[n S925 . . ADMSK21 ]
+[s S926 :3 `uc 1 :1 `uc 1 ]
+[n S926 . . ADMSK31 ]
+[s S927 :4 `uc 1 :1 `uc 1 ]
+[n S927 . . ADMSK41 ]
+[s S928 :5 `uc 1 :1 `uc 1 ]
+[n S928 . . ADMSK51 ]
+[s S929 :7 `uc 1 :1 `uc 1 ]
+[n S929 . . GCEN1 ]
+[s S930 :2 `uc 1 :1 `uc 1 ]
+[n S930 . . PEN1 ]
+[s S931 :3 `uc 1 :1 `uc 1 ]
+[n S931 . . RCEN1 ]
+[s S932 :1 `uc 1 :1 `uc 1 ]
+[n S932 . . RSEN1 ]
+[s S933 :1 `uc 1 ]
+[n S933 . SEN1 ]
+[u S918 `S919 1 `S920 1 `S921 1 `S922 1 `S923 1 `S924 1 `S925 1 `S926 1 `S927 1 `S928 1 `S929 1 `S930 1 `S931 1 `S932 1 `S933 1 ]
+[n S918 . . . . . . . . . . . . . . . . ]
+"15194
+[v _SSP1CON2bits `VS918 ~T0 @X0 0 e@4037 ]
+[s S746 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S746 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
+[s S747 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S747 . . SSPIF TXIF RCIF ]
+[u S745 `S746 1 `S747 1 ]
+[n S745 . . . ]
+"11896
+[v _PIR1bits `VS745 ~T0 @X0 0 e@3998 ]
+"16850
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@4041 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9162,141 +9213,147 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;user.h: 5: void Init(void);
-[; ;user.h: 6: void Tempo(int val);
-[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
-"5 get_clav.h
-[v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
-[; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
-"7
-[v _val_clavier `uc ~T0 @X0 1 e ]
-[i _val_clavier
--> -> 0 `i `uc
-]
-[; ;get_clav.h: 7: unsigned char val_clavier = 0;
-[; ;get_clav.h: 9: void get_clav(void);
-[; ;get_clav.h: 10: unsigned char clav_to_ascii(void);
-[; ;LCD.h: 17: extern far unsigned char LCD_DATA @ 0x1A0002;
-[; ;LCD.h: 18: extern far unsigned char LCD_FUNC @ 0x1A0000;
-"20 LCD.h
-[v _buffer_ASCII `i ~T0 @X0 -> 5 `i e ]
-[; ;LCD.h: 20: int buffer_ASCII[5];
-[; ;LCD.h: 22: void init_LCD(void);
-[; ;LCD.h: 23: void clear_LCD (void);
-[; ;LCD.h: 24: void home_LCD (void);
-[; ;LCD.h: 25: void shift_cursor_right (void);
-[; ;LCD.h: 26: void shift_cursor_left (void);
-[; ;LCD.h: 27: void set_cursor_pos (int position);
-[; ;LCD.h: 28: void INT_to_ASCII (int valeur_a_conv);
-"1 system.h
-[v _clavier_a_traiter `ui ~T0 @X0 1 e ]
-[; ;system.h: 1: unsigned int clavier_a_traiter;
-"3 Interrupt.h
-[v _clav_a_traiter `i ~T0 @X0 1 e ]
-[i _clav_a_traiter
--> 0 `i
-]
-[; ;Interrupt.h: 3: int clav_a_traiter = 0;
-[; ;Interrupt.h: 5: void high_priority interrupt clavier_appuyer (void);
-"3 CAN.h
-[v _resultat_CAN `i ~T0 @X0 1 e ]
-[i _resultat_CAN
--> 0 `i
-]
-[; ;CAN.h: 3: int resultat_CAN = 0;
-[; ;CAN.h: 5: void get_CAN(void);
 [; ;I2C.h: 3: void I2C_Init(void);
 [; ;I2C.h: 4: void I2C_Write(int VAL);
-"10 main.c
-[v _test `uc ~T0 @X0 1 e ]
-[i _test
--> -> 0 `i `uc
-]
-[; ;main.c: 10: unsigned char test = 0;
-"11
-[v _test1 `uc ~T0 @X0 1 e ]
-[i _test1
--> -> 0 `i `uc
-]
-[; ;main.c: 11: unsigned char test1 = 0;
-"15
-[v _main `(v ~T0 @X0 1 ef ]
+"5 I2C.c
+[v _I2C_Init `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 15: void main(void) {
-[e :U _main ]
+[; ;I2C.c: 4: void I2C_Init(void)
+[; ;I2C.c: 5: {
+[e :U _I2C_Init ]
 [f ]
-[; ;main.c: 16: Init();
+[; ;I2C.c: 6: SSP1STAT = 0x00;
+"6
+[e = _SSP1STAT -> -> 0 `i `uc ]
+[; ;I2C.c: 7: SSP1CON1 = 0x00;
+"7
+[e = _SSP1CON1 -> -> 0 `i `uc ]
+[; ;I2C.c: 8: SSP1CON1bits.SSPEN = 1;
+"8
+[e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
+[; ;I2C.c: 9: SSP1CON1bits.SSPM = 0x08;
+"9
+[e = . . _SSP1CON1bits 0 0 -> -> 8 `i `uc ]
+[; ;I2C.c: 10: SSP1CON2 = 0x00;
+"10
+[e = _SSP1CON2 -> -> 0 `i `uc ]
+[; ;I2C.c: 11: SSP1ADD = 0x1A;
+"11
+[e = _SSP1ADD -> -> 26 `i `uc ]
+[; ;I2C.c: 12: }
+"12
+[e :UE 1238 ]
+}
+"15
+[v _I2C_Write `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;I2C.c: 15: void I2C_Write(int VAL){
+[e :U _I2C_Write ]
+[v _VAL `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;I2C.c: 16: SSP1CON2bits.SEN = 1;
 "16
-[e ( _Init ..  ]
-[; ;main.c: 17: init_LCD();
+[e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
+[; ;I2C.c: 17: while(PIR1bits.SSP1IF == 0){}
 "17
-[e ( _init_LCD ..  ]
-[; ;main.c: 18: I2C_Init();
-"18
-[e ( _I2C_Init ..  ]
-[; ;main.c: 20: while(1){
-"20
-[e :U 1240 ]
-{
-[; ;main.c: 21: get_clav();
-"21
-[e ( _get_clav ..  ]
-[; ;main.c: 22: clear_LCD();
-"22
-[e ( _clear_LCD ..  ]
-[; ;main.c: 23: home_LCD();
-"23
-[e ( _home_LCD ..  ]
-[; ;main.c: 24: INT_to_ASCII(resultat_CAN);
-"24
-[e ( _INT_to_ASCII (1 _resultat_CAN ]
-[; ;main.c: 25: if (clavier_a_traiter == 1) {
-"25
-[e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
-{
-[; ;main.c: 27: clavier_a_traiter = 0;
-"27
-[e = _clavier_a_traiter -> -> 0 `i `ui ]
-"28
-}
-[e :U 1242 ]
-[; ;main.c: 28: }
-[; ;main.c: 29: get_CAN();
-"29
-[e ( _get_CAN ..  ]
-[; ;main.c: 30: I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
-"30
-[e ( _I2C_Write (1 -> ( _map (4 , , , , -> _resultat_CAN `l -> -> 0 `i `l -> -> 4096 `i `l -> -> 0 `i `l -> -> 255 `i `l `i ]
-[; ;main.c: 31: if(resultat_CAN > 2867){
-"31
-[e $ ! > _resultat_CAN -> 2867 `i 1243  ]
-{
-[; ;main.c: 32: PORTG = 1;
-"32
-[e = _PORTG -> -> 1 `i `uc ]
-"33
-}
-[; ;main.c: 33: }
-[e $U 1244  ]
-"34
-[e :U 1243 ]
-[; ;main.c: 34: else PORTG = 0;
-[e = _PORTG -> -> 0 `i `uc ]
-[e :U 1244 ]
-[; ;main.c: 36: Tempo(200);
-"36
-[e ( _Tempo (1 -> 200 `i ]
-"37
-}
-[e :U 1239 ]
-"20
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;main.c: 37: }
-[; ;main.c: 38: return;
-"38
-[e $UE 1238  ]
-[; ;main.c: 39: }
-"39
-[e :UE 1238 ]
+{
+}
+[e :U 1240 ]
+[e $ == -> . . _PIR1bits 0 3 `i -> 0 `i 1241  ]
+[e :U 1242 ]
+[; ;I2C.c: 18: PIR1bits.SSP1IF = 0;
+"18
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 19: SSP1BUF = 0x90;
+"19
+[e = _SSP1BUF -> -> 144 `i `uc ]
+[; ;I2C.c: 20: while(SSP1CON2bits.ACKSTAT == 1){};
+"20
+[e $U 1243  ]
+[e :U 1244 ]
+{
+}
+[e :U 1243 ]
+[e $ == -> . . _SSP1CON2bits 0 6 `i -> 1 `i 1244  ]
+[e :U 1245 ]
+[; ;I2C.c: 21: while(PIR1bits.SSP1IF == 0){}
+"21
+[e $U 1246  ]
+[e :U 1247 ]
+{
+}
+[e :U 1246 ]
+[e $ == -> . . _PIR1bits 0 3 `i -> 0 `i 1247  ]
+[e :U 1248 ]
+[; ;I2C.c: 22: PIR1bits.SSP1IF = 0;
+"22
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 23: SSP1BUF = 0x40;
+"23
+[e = _SSP1BUF -> -> 64 `i `uc ]
+[; ;I2C.c: 24: while(SSP1CON2bits.ACKSTAT == 1){};
+"24
+[e $U 1249  ]
+[e :U 1250 ]
+{
+}
+[e :U 1249 ]
+[e $ == -> . . _SSP1CON2bits 0 6 `i -> 1 `i 1250  ]
+[e :U 1251 ]
+[; ;I2C.c: 25: while(PIR1bits.SSP1IF == 0){}
+"25
+[e $U 1252  ]
+[e :U 1253 ]
+{
+}
+[e :U 1252 ]
+[e $ == -> . . _PIR1bits 0 3 `i -> 0 `i 1253  ]
+[e :U 1254 ]
+[; ;I2C.c: 26: PIR1bits.SSP1IF = 0;
+"26
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 27: SSP1BUF = VAL;
+"27
+[e = _SSP1BUF -> _VAL `uc ]
+[; ;I2C.c: 28: while(SSP1CON2bits.ACKSTAT == 1){};
+"28
+[e $U 1255  ]
+[e :U 1256 ]
+{
+}
+[e :U 1255 ]
+[e $ == -> . . _SSP1CON2bits 0 6 `i -> 1 `i 1256  ]
+[e :U 1257 ]
+[; ;I2C.c: 29: while(PIR1bits.SSP1IF == 0){}
+"29
+[e $U 1258  ]
+[e :U 1259 ]
+{
+}
+[e :U 1258 ]
+[e $ == -> . . _PIR1bits 0 3 `i -> 0 `i 1259  ]
+[e :U 1260 ]
+[; ;I2C.c: 30: PIR1bits.SSP1IF = 0;
+"30
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 31: SSP1CON2bits.PEN = 1;
+"31
+[e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
+[; ;I2C.c: 32: while(PIR1bits.SSP1IF == 0){}
+"32
+[e $U 1261  ]
+[e :U 1262 ]
+{
+}
+[e :U 1261 ]
+[e $ == -> . . _PIR1bits 0 3 `i -> 0 `i 1262  ]
+[e :U 1263 ]
+[; ;I2C.c: 33: PIR1bits.SSP1IF = 0;
+"33
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 34: }
+"34
+[e :UE 1239 ]
 }

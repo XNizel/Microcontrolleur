@@ -19,6 +19,7 @@ void Init() {
     // Définitions des E/S
     TRISB = 0x01;       //0B en entrée pout INT0
     TRISA = 0x01;       //0A en entrée pour V_POT
+    TRISG = 0x00;
     PORTD = 0;
     PORTE = 0;
     PORTH = 0;
@@ -40,4 +41,16 @@ void Tempo (int val)
     {
         __delay_ms(1);  // Utilisation de la fonction temporisation delay_ms définie dans « xc.h »
     }
+}
+
+/*
+value: the number to map.
+fromLow: the lower bound of the value?s current range.
+fromHigh: the upper bound of the value?s current range.
+toLow: the lower bound of the value?s target range.
+toHigh: the upper bound of the value?s target range.
+*/
+
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

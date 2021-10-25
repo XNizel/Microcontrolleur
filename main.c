@@ -5,6 +5,7 @@
 #include "system.h"
 #include "Interrupt.h"
 #include "CAN.h"
+#include "I2C.h"
 
 unsigned char test = 0;
 unsigned char test1 = 0;
@@ -14,15 +15,9 @@ unsigned char test1 = 0;
 void main(void) {
     Init();
     init_LCD();
-    __delay_ms(50);
-    __delay_ms(50);
-    __delay_ms(50);
-    int test_int = 12345;
-    //LCD_DATA = test_int;
-
+    I2C_Init();
       
-    while(1){
-        
+    while(1){       
         get_clav();
         clear_LCD();
         home_LCD();
@@ -32,6 +27,12 @@ void main(void) {
             clavier_a_traiter = 0; 
         }        
         get_CAN();
+        I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
+        if(resultat_CAN > 2867){
+            PORTG = 1;
+        }
+        else PORTG = 0;
+        
         Tempo(200);
     }
     return;

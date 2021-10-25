@@ -1,14 +1,19 @@
-___awdiv: CODE, 866 0 188
-_get_CAN: CODE, 1492 0 42
-___awmod: CODE, 1054 0 168
-_main: CODE, 1222 0 130
-_get_clav: CODE, 1598 0 22
-__initialization: CODE, 1620 0 12
-_home_LCD: CODE, 1534 0 32
-_Tempo: CODE, 1434 0 58
+___awdiv: CODE, 1566 0 188
+_get_CAN: CODE, 2278 0 42
+___aldiv: CODE, 866 0 260
+_map: CODE, 1126 0 226
+___awmod: CODE, 1754 0 168
+_main: CODE, 1352 0 214
+_I2C_Write: CODE, 1922 0 114
+_get_clav: CODE, 2412 0 22
+___lmul: CODE, 2036 0 98
+__initialization: CODE, 2434 0 12
+_home_LCD: CODE, 2320 0 32
+_Tempo: CODE, 2220 0 58
 _clavier_appuyer: CODE, 8 0 134
+_I2C_Init: CODE, 2384 0 28
 _init_LCD: CODE, 594 0 272
-_Init: CODE, 1352 0 82
-_clear_LCD: CODE, 1566 0 32
+_Init: CODE, 2134 0 86
+_clear_LCD: CODE, 2352 0 32
 _INT_to_ASCII: CODE, 146 0 448
-Total: 1620
+Total: 2434

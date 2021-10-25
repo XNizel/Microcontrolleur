@@ -11926,6 +11926,7 @@ extern void _delay3(unsigned char);
 # 5 "user.h"
 void Init(void);
 void Tempo(int val);
+long map(long x, long in_min, long in_max, long out_min, long out_max);
 
 # 5 "user.c"
 void Init() {
@@ -11945,6 +11946,7 @@ ANCON2=0x00;
 
 TRISB = 0x01;
 TRISA = 0x01;
+TRISG = 0x00;
 PORTD = 0;
 PORTE = 0;
 PORTH = 0;
@@ -11966,4 +11968,9 @@ for(i=0; i<val; i++)
 {
 _delay((unsigned long)((1)*(11059200/4000.0)));
 }
+}
+
+# 54
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

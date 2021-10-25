@@ -9145,6 +9145,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
 [; ;user.h: 5: void Init(void);
 [; ;user.h: 6: void Tempo(int val);
+[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
 [; ;LCD.h: 17: extern far unsigned char LCD_DATA @ 0x1A0002;
 [; ;LCD.h: 18: extern far unsigned char LCD_FUNC @ 0x1A0000;
 "20 LCD.h
