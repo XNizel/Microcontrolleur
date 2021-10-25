@@ -3,12 +3,78 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MEMCON `Vuc ~T0 @X0 0 e@3878 ]
 "1416
 [v _ANCON0 `Vuc ~T0 @X0 0 e@3877 ]
+[s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 . ANSEL0 ANSEL1 ANSEL2 ANSEL3 ANSEL4 ANSEL5 ANSEL6 ANSEL7 ]
+[s S96 :1 `uc 1 ]
+[n S96 . PCFG0 ]
+[s S97 :1 `uc 1 :1 `uc 1 ]
+[n S97 . . PCFG1 ]
+[s S98 :2 `uc 1 :1 `uc 1 ]
+[n S98 . . PCFG2 ]
+[s S99 :3 `uc 1 :1 `uc 1 ]
+[n S99 . . PCFG3 ]
+[s S100 :4 `uc 1 :1 `uc 1 ]
+[n S100 . . PCFG4 ]
+[s S101 :5 `uc 1 :1 `uc 1 ]
+[n S101 . . PCFG5 ]
+[s S102 :6 `uc 1 :1 `uc 1 ]
+[n S102 . . PCFG6 ]
+[s S103 :7 `uc 1 :1 `uc 1 ]
+[n S103 . . PCFG7 ]
+[u S94 `S95 1 `S96 1 `S97 1 `S98 1 `S99 1 `S100 1 `S101 1 `S102 1 `S103 1 ]
+[n S94 . . . . . . . . . . ]
+"1464
+[v _ANCON0bits `VS94 ~T0 @X0 0 e@3877 ]
+[s S906 :1 `uc 1 :1 `uc 1 ]
+[n S906 . . GO_NOT_DONE ]
+[s S907 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
+[n S907 . ADON GO_nDONE CHS ]
+[s S908 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S908 . . DONE CHS0 CHS1 CHS2 CHS3 CHS4 ]
+[s S909 :1 `uc 1 :1 `uc 1 ]
+[n S909 . . GO ]
+[s S910 :1 `uc 1 :1 `uc 1 ]
+[n S910 . . NOT_DONE ]
+[s S911 :1 `uc 1 :1 `uc 1 ]
+[n S911 . . nDONE ]
+[s S912 :1 `uc 1 :1 `uc 1 ]
+[n S912 . . GODONE ]
+[s S913 :1 `uc 1 :1 `uc 1 ]
+[n S913 . . GO_DONE ]
+[u S905 `S906 1 `S907 1 `S908 1 `S909 1 `S910 1 `S911 1 `S912 1 `S913 1 ]
+[n S905 . . . . . . . . . ]
+"14990
+[v _ADCON0bits `VS905 ~T0 @X0 0 e@4034 ]
+[s S900 :3 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S900 . CHSN VNCFG VCFG TRIGSEL ]
+[s S901 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S901 . CHSN0 CHSN1 CHSN2 . VCFG0 VCFG1 TRIGSEL0 TRIGSEL1 ]
+[s S902 :3 `uc 1 :1 `uc 1 ]
+[n S902 . . CHSN3 ]
+[s S903 :4 `uc 1 :1 `uc 1 ]
+[n S903 . . VCFG01 ]
+[s S904 :5 `uc 1 :1 `uc 1 ]
+[n S904 . . VCFG11 ]
+[u S899 `S900 1 `S901 1 `S902 1 `S903 1 `S904 1 ]
+[n S899 . . . . . . ]
+"14871
+[v _ADCON1bits `VS899 ~T0 @X0 0 e@4033 ]
+[s S897 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S897 . ADCS ACQT . ADFM ]
+[s S898 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S898 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACQT2 ]
+[u S896 `S897 1 `S898 1 ]
+[n S896 . . . ]
+"14787
+[v _ADCON2bits `VS896 ~T0 @X0 0 e@4032 ]
 "1284
 [v _ANCON1 `Vuc ~T0 @X0 0 e@3876 ]
 "1152
 [v _ANCON2 `Vuc ~T0 @X0 0 e@3875 ]
 "11192
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"11131
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "8614
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 "8854
@@ -9214,80 +9280,98 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 10: ANCON0=0x00;
 "10
 [e = _ANCON0 -> -> 0 `i `uc ]
-[; ;user.c: 11: ANCON1=0x00;
+[; ;user.c: 11: ANCON0bits.ANSEL0 = 1;
 "11
-[e = _ANCON1 -> -> 0 `i `uc ]
-[; ;user.c: 12: ANCON2=0x00;
+[e = . . _ANCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;user.c: 12: ADCON0bits.ADON = 1;
 "12
-[e = _ANCON2 -> -> 0 `i `uc ]
-[; ;user.c: 15: TRISB = 0x01;
+[e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
+[; ;user.c: 13: ADCON1bits.VNCFG = 0;
+"13
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 14: ADCON1bits.VCFG = 0;
+"14
+[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 15: ADCON2bits.ADFM = 1;
 "15
-[e = _TRISB -> -> 1 `i `uc ]
-[; ;user.c: 16: PORTD = 0;
+[e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
+[; ;user.c: 16: ANCON1=0x00;
 "16
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;user.c: 17: PORTE = 0;
+[e = _ANCON1 -> -> 0 `i `uc ]
+[; ;user.c: 17: ANCON2=0x00;
 "17
-[e = _PORTE -> -> 0 `i `uc ]
-[; ;user.c: 18: PORTH = 0;
-"18
-[e = _PORTH -> -> 0 `i `uc ]
-[; ;user.c: 21: RCONbits.IPEN = 1;
+[e = _ANCON2 -> -> 0 `i `uc ]
+[; ;user.c: 20: TRISB = 0x01;
+"20
+[e = _TRISB -> -> 1 `i `uc ]
+[; ;user.c: 21: TRISA = 0x01;
 "21
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;user.c: 22: INTCONbits.GIE = 1;
+[e = _TRISA -> -> 1 `i `uc ]
+[; ;user.c: 22: PORTD = 0;
 "22
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;user.c: 23: INTCONbits.PEIE = 1;
+[e = _PORTD -> -> 0 `i `uc ]
+[; ;user.c: 23: PORTE = 0;
 "23
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;user.c: 24: INTCONbits.INT0IE = 1;
+[e = _PORTE -> -> 0 `i `uc ]
+[; ;user.c: 24: PORTH = 0;
 "24
-[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;user.c: 25: INTCON2bits.INTEDG0 = 0;
-"25
-[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;user.c: 26: INTCONbits.INT0F = 0;
-"26
-[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-[; ;user.c: 27: }
+[e = _PORTH -> -> 0 `i `uc ]
+[; ;user.c: 27: RCONbits.IPEN = 1;
 "27
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;user.c: 28: INTCONbits.GIE = 1;
+"28
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;user.c: 29: INTCONbits.PEIE = 1;
+"29
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;user.c: 30: INTCONbits.INT0IE = 1;
+"30
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;user.c: 31: INTCON2bits.INTEDG0 = 0;
+"31
+[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
+[; ;user.c: 32: INTCONbits.INT0F = 0;
+"32
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+[; ;user.c: 33: }
+"33
 [e :UE 1238 ]
 }
-"31
+"37
 [v _Tempo `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;user.c: 30: void Tempo (int val)
-[; ;user.c: 31: {
+[; ;user.c: 36: void Tempo (int val)
+[; ;user.c: 37: {
 [e :U _Tempo ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"32
+"38
 [v _i `i ~T0 @X0 1 a ]
-[; ;user.c: 32: int i;
-[; ;user.c: 33: for(i=0; i<val; i++)
-"33
+[; ;user.c: 38: int i;
+[; ;user.c: 39: for(i=0; i<val; i++)
+"39
 {
 [e = _i -> 0 `i ]
 [e $U 1243  ]
-"34
+"40
 [e :U 1240 ]
-[; ;user.c: 34: {
+[; ;user.c: 40: {
 {
-[; ;user.c: 35: _delay((unsigned long)((1)*(11059200/4000.0)));
-"35
+[; ;user.c: 41: _delay((unsigned long)((1)*(11059200/4000.0)));
+"41
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 11059200 `l `d .4000.0 `ul ]
-"36
+"42
 }
-"33
+"39
 [e ++ _i -> 1 `i ]
 [e :U 1243 ]
 [e $ < _i _val 1240  ]
 [e :U 1241 ]
-"36
+"42
 }
-[; ;user.c: 36: }
-[; ;user.c: 37: }
-"37
+[; ;user.c: 42: }
+[; ;user.c: 43: }
+"43
 [e :UE 1239 ]
 }

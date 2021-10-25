@@ -44,7 +44,28 @@ void shift_cursor_left (void) {
     Tempo(2);
 }
 
-void set_cursor_pos (int pos) {
+void set_cursor_pos (int position) {
     LCD_FUNC = RETURN_HOME;
     Tempo(2);
+}
+
+void INT_to_ASCII (int valeur_a_conv){
+    buffer_ASCII[0] = valeur_a_conv % 10;   //On prend le dernier chiffre
+    valeur_a_conv = valeur_a_conv / 10;     //On se debarasse du dernier chiffre
+    buffer_ASCII[1] = valeur_a_conv % 10;
+    valeur_a_conv = valeur_a_conv / 10;
+    buffer_ASCII[2] = valeur_a_conv % 10;
+    valeur_a_conv = valeur_a_conv / 10;
+    buffer_ASCII[3] = valeur_a_conv % 10;
+    valeur_a_conv = valeur_a_conv / 10;
+    buffer_ASCII[4] = valeur_a_conv % 10;
+    valeur_a_conv = valeur_a_conv / 10;
+    buffer_ASCII[5] = valeur_a_conv % 10;
+    valeur_a_conv = valeur_a_conv / 10;
+    
+    for (int i = 5; i >= 0; i--){
+        LCD_DATA = (buffer_ASCII[i]) + 0x30;
+        while((LCD_FUNC&0x80)==0x80);
+    } 
+    
 }

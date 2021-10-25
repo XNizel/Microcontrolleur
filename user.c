@@ -8,11 +8,17 @@ void Init() {
 
     // Obligatoire : Désactivation des fonctions analogiques
     ANCON0=0x00;
+    ANCON0bits.ANSEL0 = 1;  //Bit 0 en entrée analogique pour lecture de V_POT
+    ADCON0bits.ADON = 1;    //Bit alimentation convertisseur
+    ADCON1bits.VNCFG = 0;   //VREF-
+    ADCON1bits.VCFG = 0;    //VREF+
+    ADCON2bits.ADFM = 1;    //Resultat Right Justified
     ANCON1=0x00;
     ANCON2=0x00;
      
     // Définitions des E/S
-    TRISB = 0x01;       //0B en entrée
+    TRISB = 0x01;       //0B en entrée pout INT0
+    TRISA = 0x01;       //0A en entrée pour V_POT
     PORTD = 0;
     PORTE = 0;
     PORTH = 0;

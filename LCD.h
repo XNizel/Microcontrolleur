@@ -17,8 +17,12 @@
 extern far unsigned char LCD_DATA @ 0x1A0002;
 extern far unsigned char LCD_FUNC @ 0x1A0000;
 
+int buffer_ASCII[5];
+
 void init_LCD(void);
 void clear_LCD (void);
 void home_LCD (void);
 void shift_cursor_right (void);
-void set_cursor_pos (int pos);
+void shift_cursor_left (void);
+void set_cursor_pos (int position);
+void INT_to_ASCII (int valeur_a_conv);

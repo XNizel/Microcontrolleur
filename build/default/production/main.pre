@@ -11939,11 +11939,15 @@ unsigned char clav_to_ascii(void);
 extern far unsigned char LCD_DATA @ 0x1A0002;
 extern far unsigned char LCD_FUNC @ 0x1A0000;
 
+int buffer_ASCII[5];
+
 void init_LCD(void);
 void clear_LCD (void);
 void home_LCD (void);
 void shift_cursor_right (void);
-void set_cursor_pos (int pos);
+void shift_cursor_left (void);
+void set_cursor_pos (int position);
+void INT_to_ASCII (int valeur_a_conv);
 
 # 1 "system.h"
 unsigned int clavier_a_traiter;
@@ -11953,25 +11957,39 @@ int clav_a_traiter = 0;
 
 void high_priority interrupt clavier_appuyer (void);
 
-# 8 "main.c"
+# 3 "CAN.h"
+int resultat_CAN = 0;
+
+void get_CAN(void);
+
+# 9 "main.c"
 unsigned char test = 0;
 unsigned char test1 = 0;
+
 
 
 void main(void) {
 Init();
 init_LCD();
+_delay((unsigned long)((50)*(11059200/4000.0)));
+_delay((unsigned long)((50)*(11059200/4000.0)));
+_delay((unsigned long)((50)*(11059200/4000.0)));
+int test_int = 12345;
 
 
 
 while(1){
 
 get_clav();
+clear_LCD();
+home_LCD();
+INT_to_ASCII(resultat_CAN);
 if (clavier_a_traiter == 1) {
-LCD_DATA = val_clavier;
+
 clavier_a_traiter = 0;
 }
-
+get_CAN();
+Tempo(200);
 }
 return;
 }

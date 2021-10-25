@@ -5,4 +5,5 @@ get_clav.h  \
 user.h  \
 LCD.h  \
 system.h  \
+CAN.h  \
 Interrupt.h 

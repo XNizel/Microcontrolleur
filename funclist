@@ -1,8 +1,14 @@
-_main: CODE, 418 0 62
-_get_clav: CODE, 600 0 22
-__initialization: CODE, 622 0 12
-_Tempo: CODE, 542 0 58
+___awdiv: CODE, 866 0 188
+_get_CAN: CODE, 1492 0 42
+___awmod: CODE, 1054 0 168
+_main: CODE, 1222 0 130
+_get_clav: CODE, 1598 0 22
+__initialization: CODE, 1620 0 12
+_home_LCD: CODE, 1534 0 32
+_Tempo: CODE, 1434 0 58
 _clavier_appuyer: CODE, 8 0 134
-_init_LCD: CODE, 146 0 272
-_Init: CODE, 480 0 62
-Total: 622
+_init_LCD: CODE, 594 0 272
+_Init: CODE, 1352 0 82
+_clear_LCD: CODE, 1566 0 32
+_INT_to_ASCII: CODE, 146 0 448
+Total: 1620
