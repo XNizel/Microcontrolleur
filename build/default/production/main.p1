@@ -2,18 +2,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "5 user.h
 [v _Init `(v ~T0 @X0 0 ef ]
-"27 LCD.h
+"20 LCD.h
 [v _init_LCD `(v ~T0 @X0 0 ef ]
-"29
-[v _home_LCD `(v ~T0 @X0 0 ef ]
-"28
-[v _clear_LCD `(v ~T0 @X0 0 ef ]
-"7 get_clav.h
-[v _get_clav `(uc ~T0 @X0 0 ef ]
-"8
-[v _clav_to_ascii `(uc ~T0 @X0 0 ef1`uc ]
-"6 user.h
-[v _Tempo `(v ~T0 @X0 0 ef1`i ]
+"9 get_clav.h
+[v _get_clav `(v ~T0 @X0 0 ef ]
+"17 LCD.h
+[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9157,23 +9151,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5 get_clav.h
 [v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
 [; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
-[; ;get_clav.h: 7: unsigned char get_clav(void);
-[; ;get_clav.h: 8: unsigned char clav_to_ascii(unsigned char val);
-"24 LCD.h
-[v _LCD_DATA `Fuc ~T0 @X0 1 e@1703938 ]
-[; ;LCD.h: 24: far unsigned char LCD_DATA @ 0x1A0002;
-"25
-[v _LCD_FUNC `Fuc ~T0 @X0 1 e@1703936 ]
-[; ;LCD.h: 25: far unsigned char LCD_FUNC @ 0x1A0000;
-[; ;LCD.h: 27: void init_LCD(void);
-[; ;LCD.h: 28: void clear_LCD (void);
-[; ;LCD.h: 29: void home_LCD (void);
-[; ;LCD.h: 30: void shift_cursor_right (void);
-[; ;LCD.h: 31: void set_cursor_pos (int pos);
-[; ;LCD.h: 32: void busy (void);
+"7
+[v _val_clavier `uc ~T0 @X0 1 e ]
+[i _val_clavier
+-> -> 0 `i `uc
+]
+[; ;get_clav.h: 7: unsigned char val_clavier = 0;
+[; ;get_clav.h: 9: void get_clav(void);
+[; ;get_clav.h: 10: unsigned char clav_to_ascii(void);
+[; ;LCD.h: 17: extern far unsigned char LCD_DATA @ 0x1A0002;
+[; ;LCD.h: 18: extern far unsigned char LCD_FUNC @ 0x1A0000;
+[; ;LCD.h: 20: void init_LCD(void);
+[; ;LCD.h: 21: void clear_LCD (void);
+[; ;LCD.h: 22: void home_LCD (void);
+[; ;LCD.h: 23: void shift_cursor_right (void);
+[; ;LCD.h: 24: void set_cursor_pos (int pos);
 "1 system.h
 [v _clavier_a_traiter `ui ~T0 @X0 1 e ]
 [; ;system.h: 1: unsigned int clavier_a_traiter;
+"3 Interrupt.h
+[v _clav_a_traiter `i ~T0 @X0 1 e ]
+[i _clav_a_traiter
+-> 0 `i
+]
+[; ;Interrupt.h: 3: int clav_a_traiter = 0;
+[; ;Interrupt.h: 5: void high_priority interrupt clavier_appuyer (void);
 "8 main.c
 [v _test `uc ~T0 @X0 1 e ]
 [i _test
@@ -9198,36 +9200,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 14: init_LCD();
 "14
 [e ( _init_LCD ..  ]
-[; ;main.c: 17: while(1){
-"17
+[; ;main.c: 18: while(1){
+"18
 [e :U 1240 ]
 {
-[; ;main.c: 23: home_LCD();
+[; ;main.c: 20: get_clav();
+"20
+[e ( _get_clav ..  ]
+[; ;main.c: 21: if (clavier_a_traiter == 1) {
+"21
+[e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
+{
+[; ;main.c: 22: LCD_DATA = val_clavier;
+"22
+[e = _LCD_DATA _val_clavier ]
+[; ;main.c: 23: clavier_a_traiter = 0;
 "23
-[e ( _home_LCD ..  ]
-[; ;main.c: 24: clear_LCD();
+[e = _clavier_a_traiter -> -> 0 `i `ui ]
 "24
-[e ( _clear_LCD ..  ]
-[; ;main.c: 25: test = get_clav();
-"25
-[e = _test ( _get_clav ..  ]
-[; ;main.c: 26: test1 = clav_to_ascii(test);
+}
+[e :U 1242 ]
 "26
-[e = _test1 ( _clav_to_ascii (1 _test ]
-[; ;main.c: 28: LCD_DATA = test1;
-"28
-[e = _LCD_DATA _test1 ]
-[; ;main.c: 41: Tempo(250);
-"41
-[e ( _Tempo (1 -> 250 `i ]
-"42
 }
 [e :U 1239 ]
-"17
+"18
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;main.c: 42: }
-[; ;main.c: 43: }
-"43
+[; ;main.c: 24: }
+[; ;main.c: 26: }
+[; ;main.c: 27: return;
+"27
+[e $UE 1238  ]
+[; ;main.c: 28: }
+"28
 [e :UE 1238 ]
 }

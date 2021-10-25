@@ -4,5 +4,7 @@
 
 far unsigned char CLAVIER @ 0x180000;
 
-unsigned char get_clav(void);
-unsigned char clav_to_ascii(unsigned char val);
+unsigned char val_clavier = 0;
+
+void get_clav(void);
+unsigned char clav_to_ascii(void);

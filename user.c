@@ -13,14 +13,17 @@ void Init() {
      
     // Définitions des E/S
     TRISB = 0x01;       //0B en entrée
+    PORTD = 0;
+    PORTE = 0;
+    PORTH = 0;
      
     //  Configuration des interuptions
-    /*RCONbits.IPEN = 1;
+    RCONbits.IPEN = 1;
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;   //2 niveaux d'intérruption
     INTCONbits.INT0IE = 1;
     INTCON2bits.INTEDG0 = 0;
-    INTCONbits.INT0F = 0;*/
+    INTCONbits.INT0F = 0;
 }
 
 

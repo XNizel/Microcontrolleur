@@ -9,6 +9,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ANCON2 `Vuc ~T0 @X0 0 e@3875 ]
 "11192
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"8614
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"8854
+[v _PORTE `Vuc ~T0 @X0 0 e@3972 ]
+"9673
+[v _PORTH `Vuc ~T0 @X0 0 e@3975 ]
+[s S1084 :1 `uc 1 ]
+[n S1084 . NOT_BOR ]
+[s S1085 :1 `uc 1 :1 `uc 1 ]
+[n S1085 . . NOT_POR ]
+[s S1086 :2 `uc 1 :1 `uc 1 ]
+[n S1086 . . NOT_PD ]
+[s S1087 :3 `uc 1 :1 `uc 1 ]
+[n S1087 . . NOT_TO ]
+[s S1088 :4 `uc 1 :1 `uc 1 ]
+[n S1088 . . NOT_RI ]
+[s S1089 :5 `uc 1 :1 `uc 1 ]
+[n S1089 . . NOT_CM ]
+[s S1090 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1090 . nBOR nPOR nPD nTO nRI nCM SBOREN IPEN ]
+[s S1091 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1091 . BOR POR PD TO RI CM ]
+[u S1083 `S1084 1 `S1085 1 `S1086 1 `S1087 1 `S1088 1 `S1089 1 `S1090 1 `S1091 1 ]
+[n S1083 . . . . . . . . . ]
+"17190
+[v _RCONbits `VS1083 ~T0 @X0 0 e@4048 ]
+[s S1165 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1165 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+[s S1166 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1166 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S1167 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1167 . . GIEL GIEH ]
+[s S1168 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1168 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S1169 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1169 . . GIEL GIEH ]
+[u S1164 `S1165 1 `S1166 1 `S1167 1 `S1168 1 `S1169 1 ]
+[n S1164 . . . . . . ]
+"18388
+[v _INTCONbits `VS1164 ~T0 @X0 0 e@4082 ]
+[s S1161 :7 `uc 1 :1 `uc 1 ]
+[n S1161 . . NOT_RBPU ]
+[s S1162 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1162 . RBIP INT3IP TMR0IP INTEDG3 INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+[s S1163 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S1163 . . INT3P T0IP . RBPU ]
+[u S1160 `S1161 1 `S1162 1 `S1163 1 ]
+[n S1160 . . . . ]
+"18277
+[v _INTCON2bits `VS1160 ~T0 @X0 0 e@4081 ]
 "144 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18.h
 [v __delay `(v ~T0 @X0 0 ef1`ul ]
 [p i __delay ]
@@ -9173,44 +9223,71 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 15: TRISB = 0x01;
 "15
 [e = _TRISB -> -> 1 `i `uc ]
-[; ;user.c: 24: }
+[; ;user.c: 16: PORTD = 0;
+"16
+[e = _PORTD -> -> 0 `i `uc ]
+[; ;user.c: 17: PORTE = 0;
+"17
+[e = _PORTE -> -> 0 `i `uc ]
+[; ;user.c: 18: PORTH = 0;
+"18
+[e = _PORTH -> -> 0 `i `uc ]
+[; ;user.c: 21: RCONbits.IPEN = 1;
+"21
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;user.c: 22: INTCONbits.GIE = 1;
+"22
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;user.c: 23: INTCONbits.PEIE = 1;
+"23
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;user.c: 24: INTCONbits.INT0IE = 1;
 "24
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;user.c: 25: INTCON2bits.INTEDG0 = 0;
+"25
+[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
+[; ;user.c: 26: INTCONbits.INT0F = 0;
+"26
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+[; ;user.c: 27: }
+"27
 [e :UE 1238 ]
 }
-"28
+"31
 [v _Tempo `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;user.c: 27: void Tempo (int val)
-[; ;user.c: 28: {
+[; ;user.c: 30: void Tempo (int val)
+[; ;user.c: 31: {
 [e :U _Tempo ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"29
+"32
 [v _i `i ~T0 @X0 1 a ]
-[; ;user.c: 29: int i;
-[; ;user.c: 30: for(i=0; i<val; i++)
-"30
+[; ;user.c: 32: int i;
+[; ;user.c: 33: for(i=0; i<val; i++)
+"33
 {
 [e = _i -> 0 `i ]
 [e $U 1243  ]
-"31
+"34
 [e :U 1240 ]
-[; ;user.c: 31: {
+[; ;user.c: 34: {
 {
-[; ;user.c: 32: _delay((unsigned long)((1)*(11059200/4000.0)));
-"32
+[; ;user.c: 35: _delay((unsigned long)((1)*(11059200/4000.0)));
+"35
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 11059200 `l `d .4000.0 `ul ]
-"33
+"36
 }
-"30
+"33
 [e ++ _i -> 1 `i ]
 [e :U 1243 ]
 [e $ < _i _val 1240  ]
 [e :U 1241 ]
-"33
+"36
 }
-[; ;user.c: 33: }
-[; ;user.c: 34: }
-"34
+[; ;user.c: 36: }
+[; ;user.c: 37: }
+"37
 [e :UE 1239 ]
 }

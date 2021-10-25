@@ -13,7 +13,7 @@ void init_LCD(void){
     Tempo(1);
     LCD_FUNC = SET_FUNC_8BIT_2LINE_5x7;
     Tempo(1);
-    LCD_FUNC = 0x14;
+    LCD_FUNC = SHIFT_CURSOR_RIGHT;
     Tempo(1);
     LCD_FUNC = DISPLAY_ON_CUR_ON_BLINK_OFF;
     Tempo(1);
@@ -21,7 +21,7 @@ void init_LCD(void){
     Tempo(2);
     LCD_FUNC = RETURN_HOME;
     Tempo(2);
-    LCD_FUNC = DISPLAY_CLEAR;             
+    LCD_FUNC = DISPLAY_CLEAR;
 }
 
 void clear_LCD (void) {
@@ -47,10 +47,4 @@ void shift_cursor_left (void) {
 void set_cursor_pos (int pos) {
     LCD_FUNC = RETURN_HOME;
     Tempo(2);
-}
-
-void busy(void){
-    while(LCD_FUNC & 0x80 == 0x80){
-        
-    }
 }

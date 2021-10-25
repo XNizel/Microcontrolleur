@@ -11939,8 +11939,17 @@ ANCON2=0x00;
 
 
 TRISB = 0x01;
+PORTD = 0;
+PORTE = 0;
+PORTH = 0;
 
-# 24
+
+RCONbits.IPEN = 1;
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+INTCONbits.INT0IE = 1;
+INTCON2bits.INTEDG0 = 0;
+INTCONbits.INT0F = 0;
 }
 
 

@@ -11927,16 +11927,15 @@ extern void _delay3(unsigned char);
 void Init(void);
 void Tempo(int val);
 
-# 24 "LCD.h"
-far unsigned char LCD_DATA @ 0x1A0002;
-far unsigned char LCD_FUNC @ 0x1A0000;
+# 17 "LCD.h"
+extern far unsigned char LCD_DATA @ 0x1A0002;
+extern far unsigned char LCD_FUNC @ 0x1A0000;
 
 void init_LCD(void);
 void clear_LCD (void);
 void home_LCD (void);
 void shift_cursor_right (void);
 void set_cursor_pos (int pos);
-void busy (void);
 
 # 6 "LCD.c"
 void init_LCD(void){
@@ -11983,10 +11982,4 @@ Tempo(2);
 void set_cursor_pos (int pos) {
 LCD_FUNC = 0x02;
 Tempo(2);
-}
-
-void busy(void){
-while(LCD_FUNC & 0x80 == 0x80){
-
-}
 }

@@ -11924,7 +11924,7 @@ extern void _delaywdt(unsigned long);
 extern void _delay3(unsigned char);
 
 
-# 98 "Configuration_bits.c"
+# 7 "Configuration_bits.c"
 #pragma config CONFIG1L = 0x1D
 #pragma config CONFIG1H = 0x03
 #pragma config CONFIG2L = 0x61

@@ -13,20 +13,12 @@
 #define SET_FUNC_8BIT_2LINE_5x10 0x3C
 #define SET_FUNC_8BIT_2LINE_5x7 0x38
 
-#define RS TRIS
-#define EN RD3
-#define D4 RD4
-#define D5 RD5
-#define D6 RD6
-#define D7 RD7
 
-
-far unsigned char LCD_DATA @ 0x1A0002;
-far unsigned char LCD_FUNC @ 0x1A0000;
+extern far unsigned char LCD_DATA @ 0x1A0002;
+extern far unsigned char LCD_FUNC @ 0x1A0000;
 
 void init_LCD(void);
 void clear_LCD (void);
 void home_LCD (void);
 void shift_cursor_right (void);
 void set_cursor_pos (int pos);
-void busy (void);

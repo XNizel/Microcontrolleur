@@ -9140,62 +9140,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5 get_clav.h
 [v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
 [; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
-[; ;get_clav.h: 7: unsigned char get_clav(void);
-[; ;get_clav.h: 8: unsigned char clav_to_ascii(unsigned char val);
-"4 get_clav.c
-[v _get_clav `(uc ~T0 @X0 1 ef ]
+"7
+[v _val_clavier `uc ~T0 @X0 1 e ]
+[i _val_clavier
+-> -> 0 `i `uc
+]
+[; ;get_clav.h: 7: unsigned char val_clavier = 0;
+[; ;get_clav.h: 9: void get_clav(void);
+[; ;get_clav.h: 10: unsigned char clav_to_ascii(void);
+"9 get_clav.c
+[v _get_clav `(v ~T0 @X0 1 ef ]
 {
-[; ;get_clav.c: 4: unsigned char get_clav(void) {
+[; ;get_clav.c: 9: void get_clav(void) {
 [e :U _get_clav ]
 [f ]
-"5
-[v _val `uc ~T0 @X0 1 a ]
-[; ;get_clav.c: 5: unsigned char val = CLAVIER & 0x0F;
-[e = _val -> & -> _CLAVIER `i -> 15 `i `uc ]
-[; ;get_clav.c: 6: return val;
-"6
-[e ) _val ]
-[e $UE 1238  ]
-[; ;get_clav.c: 7: }
-"7
+[; ;get_clav.c: 11: val_clavier = (CLAVIER + 0x30);
+"11
+[e = _val_clavier -> + -> _CLAVIER `i -> 48 `i `uc ]
+[; ;get_clav.c: 12: }
+"12
 [e :UE 1238 ]
 }
-"9
-[v _clav_to_ascii `(uc ~T0 @X0 1 ef1`uc ]
+"21
+[v _clav_to_ascii `(uc ~T0 @X0 1 ef ]
 {
-[; ;get_clav.c: 9: unsigned char clav_to_ascii(unsigned char val) {
+[; ;get_clav.c: 21: unsigned char clav_to_ascii(void) {
 [e :U _clav_to_ascii ]
-[v _val `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;get_clav.c: 12: if (val >= 0 || val <= 9) {
-"12
+"22
+[v _val `uc ~T0 @X0 1 a ]
+[; ;get_clav.c: 22: unsigned char val = 1;
+[e = _val -> -> 1 `i `uc ]
+[; ;get_clav.c: 24: if (val >= 0 || val <= 9) {
+"24
 [e $ ! || >= -> _val `i -> 0 `i <= -> _val `i -> 9 `i 1240  ]
 {
-[; ;get_clav.c: 13: val = val + 0x30;
-"13
+[; ;get_clav.c: 25: val = val + 0x30;
+"25
 [e = _val -> + -> _val `i -> 48 `i `uc ]
-"14
+"26
 }
-[; ;get_clav.c: 14: }
+[; ;get_clav.c: 26: }
 [e $U 1241  ]
-"15
+"27
 [e :U 1240 ]
-[; ;get_clav.c: 15: else if (val >= 10 || val <= 15) {
+[; ;get_clav.c: 27: else if (val >= 10 || val <= 15) {
 [e $ ! || >= -> _val `i -> 10 `i <= -> _val `i -> 15 `i 1242  ]
 {
-[; ;get_clav.c: 16: val = val + 0x41;
-"16
+[; ;get_clav.c: 28: val = val + 0x41;
+"28
 [e = _val -> + -> _val `i -> 65 `i `uc ]
-"17
+"29
 }
 [e :U 1242 ]
-"19
+"31
 [e :U 1241 ]
-[; ;get_clav.c: 17: }
-[; ;get_clav.c: 19: return val;
+[; ;get_clav.c: 29: }
+[; ;get_clav.c: 31: return val;
 [e ) _val ]
 [e $UE 1239  ]
-[; ;get_clav.c: 20: }
-"20
+[; ;get_clav.c: 32: }
+"32
 [e :UE 1239 ]
 }
