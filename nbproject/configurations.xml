@@ -8,10 +8,11 @@
       <itemPath>system.h</itemPath>
       <itemPath>LCD.h</itemPath>
       <itemPath>C:/Program Files (x86)/Microchip/xc8/v1.12/include/xc.h</itemPath>
-      <itemPath>get_clav.h</itemPath>
       <itemPath>Interrupt.h</itemPath>
       <itemPath>CAN.h</itemPath>
       <itemPath>I2C.h</itemPath>
+      <itemPath>get_clav.h</itemPath>
+      <itemPath>EUSART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -25,9 +26,10 @@
       <itemPath>LCD.c</itemPath>
       <itemPath>user.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>get_clav.c</itemPath>
       <itemPath>CAN.c</itemPath>
       <itemPath>I2C.c</itemPath>
+      <itemPath>get_clav.c</itemPath>
+      <itemPath>EUSART.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -168,6 +170,8 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>

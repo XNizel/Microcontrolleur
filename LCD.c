@@ -65,7 +65,6 @@ void INT_to_ASCII (int valeur_a_conv){
     
     for (int i = 5; i >= 0; i--){
         LCD_DATA = (buffer_ASCII[i]) + 0x30;
-        while((LCD_FUNC&0x80)==0x80);
-    } 
-    
+        while((LCD_FUNC & 0x80) == 0x80);
+    }     
 }

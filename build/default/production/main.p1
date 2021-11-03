@@ -14,14 +14,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _home_LCD `(v ~T0 @X0 0 ef ]
 "28
 [v _INT_to_ASCII `(v ~T0 @X0 0 ef1`i ]
-"5 CAN.h
-[v _get_CAN `(v ~T0 @X0 0 ef ]
-"4 I2C.h
-[v _I2C_Write `(v ~T0 @X0 0 ef1`i ]
-"7 user.h
-[v _map `(l ~T0 @X0 0 ef5`l`l`l`l`l ]
-"9443 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _PORTG `Vuc ~T0 @X0 0 e@3974 ]
+"17
+[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
+"10 EUSART.h
+[v _rx_data `(uc ~T0 @X0 0 ef ]
+"9
+[v _tx_data `(v ~T0 @X0 0 ef1`uc ]
 "6 user.h
 [v _Tempo `(v ~T0 @X0 0 ef1`i ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
@@ -9197,7 +9195,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;Interrupt.h: 3: int clav_a_traiter = 0;
-[; ;Interrupt.h: 5: void high_priority interrupt clavier_appuyer (void);
+"4
+[v _char_recu `i ~T0 @X0 1 e ]
+[i _char_recu
+-> 0 `i
+]
+[; ;Interrupt.h: 4: int char_recu = 0;
+"5
+[v _char_transmis `i ~T0 @X0 1 e ]
+[i _char_transmis
+-> 0 `i
+]
+[; ;Interrupt.h: 5: int char_transmis = 0;
+[; ;Interrupt.h: 7: void high_priority interrupt clavier_appuyer (void);
+[; ;Interrupt.h: 9: void low_priority interrupt UART (void);
 "3 CAN.h
 [v _resultat_CAN `i ~T0 @X0 1 e ]
 [i _resultat_CAN
@@ -9207,96 +9218,145 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;CAN.h: 5: void get_CAN(void);
 [; ;I2C.h: 3: void I2C_Init(void);
 [; ;I2C.h: 4: void I2C_Write(int VAL);
-"10 main.c
-[v _test `uc ~T0 @X0 1 e ]
-[i _test
--> -> 0 `i `uc
+"3 EUSART.h
+[v _data1 `uc ~T0 @X0 1 e ]
+[; ;EUSART.h: 3: unsigned char data1;
+"4
+[v _TX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
+[i _TX_BUFFER
+:U ..
+-> 97 `c
+-> 98 `c
+-> 99 `c
+-> 100 `c
+-> 101 `c
+-> 0 `c
+..
 ]
-[; ;main.c: 10: unsigned char test = 0;
-"11
-[v _test1 `uc ~T0 @X0 1 e ]
-[i _test1
--> -> 0 `i `uc
+[; ;EUSART.h: 4: unsigned char TX_BUFFER[20] = "abcde";
+"5
+[v _TX_INDEX `i ~T0 @X0 1 e ]
+[i _TX_INDEX
+-> 0 `i
 ]
-[; ;main.c: 11: unsigned char test1 = 0;
-"15
+[; ;EUSART.h: 5: int TX_INDEX = 0;
+"6
+[v _RX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
+[; ;EUSART.h: 6: unsigned char RX_BUFFER[20];
+"7
+[v _RX_INDEX `i ~T0 @X0 1 e ]
+[i _RX_INDEX
+-> 0 `i
+]
+[; ;EUSART.h: 7: int RX_INDEX = 0;
+[; ;EUSART.h: 9: void tx_data(unsigned char data);
+[; ;EUSART.h: 10: unsigned char rx_data(void);
+[; ;EUSART.h: 11: void tx_chaine (void);
+[; ;EUSART.h: 12: void rx_chaine (void);
+"12 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 15: void main(void) {
+[; ;main.c: 12: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 16: Init();
-"16
+[; ;main.c: 13: Init();
+"13
 [e ( _Init ..  ]
-[; ;main.c: 17: init_LCD();
-"17
+[; ;main.c: 14: init_LCD();
+"14
 [e ( _init_LCD ..  ]
-[; ;main.c: 18: I2C_Init();
-"18
+[; ;main.c: 15: I2C_Init();
+"15
 [e ( _I2C_Init ..  ]
-[; ;main.c: 20: while(1){
-"20
+[; ;main.c: 17: while(1){
+"17
 [e :U 1240 ]
 {
-[; ;main.c: 21: get_clav();
-"21
+[; ;main.c: 19: get_clav();
+"19
 [e ( _get_clav ..  ]
-[; ;main.c: 22: clear_LCD();
-"22
+[; ;main.c: 20: clear_LCD();
+"20
 [e ( _clear_LCD ..  ]
-[; ;main.c: 23: home_LCD();
-"23
+[; ;main.c: 21: home_LCD();
+"21
 [e ( _home_LCD ..  ]
-[; ;main.c: 24: INT_to_ASCII(resultat_CAN);
-"24
+[; ;main.c: 22: INT_to_ASCII(resultat_CAN);
+"22
 [e ( _INT_to_ASCII (1 _resultat_CAN ]
-[; ;main.c: 25: if (clavier_a_traiter == 1) {
-"25
+[; ;main.c: 24: if (clavier_a_traiter == 1) {
+"24
 [e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
 {
-[; ;main.c: 27: clavier_a_traiter = 0;
+[; ;main.c: 26: clear_LCD();
+"26
+[e ( _clear_LCD ..  ]
+[; ;main.c: 27: home_LCD();
 "27
-[e = _clavier_a_traiter -> -> 0 `i `ui ]
+[e ( _home_LCD ..  ]
+[; ;main.c: 28: LCD_DATA = 'A';
 "28
+[e = _LCD_DATA -> -> 65 `ui `uc ]
+[; ;main.c: 29: clavier_a_traiter = 0;
+"29
+[e = _clavier_a_traiter -> -> 0 `i `ui ]
+"30
 }
 [e :U 1242 ]
-[; ;main.c: 28: }
-[; ;main.c: 29: get_CAN();
-"29
-[e ( _get_CAN ..  ]
-[; ;main.c: 30: I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
-"30
-[e ( _I2C_Write (1 -> ( _map (4 , , , , -> _resultat_CAN `l -> -> 0 `i `l -> -> 4096 `i `l -> -> 0 `i `l -> -> 255 `i `l `i ]
-[; ;main.c: 31: if(resultat_CAN > 2867){
+[; ;main.c: 30: }
+[; ;main.c: 31: if (char_recu == 1){
 "31
-[e $ ! > _resultat_CAN -> 2867 `i 1243  ]
+[e $ ! == _char_recu -> 1 `i 1243  ]
 {
-[; ;main.c: 32: PORTG = 1;
+[; ;main.c: 32: RX_BUFFER[RX_INDEX] = rx_data();
 "32
-[e = _PORTG -> -> 1 `i `uc ]
+[e = *U + &U _RX_BUFFER * -> -> _RX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ( _rx_data ..  ]
+[; ;main.c: 33: RX_INDEX += 1;
 "33
-}
-[; ;main.c: 33: }
-[e $U 1244  ]
+[e =+ _RX_INDEX -> 1 `i ]
+[; ;main.c: 34: char_recu = 0;
 "34
+[e = _char_recu -> 0 `i ]
+"35
+}
 [e :U 1243 ]
-[; ;main.c: 34: else PORTG = 0;
-[e = _PORTG -> -> 0 `i `uc ]
-[e :U 1244 ]
-[; ;main.c: 36: Tempo(200);
-"36
-[e ( _Tempo (1 -> 200 `i ]
+[; ;main.c: 35: }
+[; ;main.c: 37: if (RX_BUFFER[RX_INDEX - 1] == 'e'){
 "37
+[e $ ! == -> *U + &U _RX_BUFFER * -> -> - _RX_INDEX -> 1 `i `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux `ui -> 101 `ui 1244  ]
+{
+[; ;main.c: 38: if (char_transmis == 1){
+"38
+[e $ ! == _char_transmis -> 1 `i 1245  ]
+{
+[; ;main.c: 39: tx_data(RX_BUFFER[TX_INDEX]);
+"39
+[e ( _tx_data (1 *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
+[; ;main.c: 40: TX_INDEX += 1;
+"40
+[e =+ _TX_INDEX -> 1 `i ]
+"41
+}
+[e :U 1245 ]
+"42
+}
+[e :U 1244 ]
+[; ;main.c: 41: }
+[; ;main.c: 42: }
+[; ;main.c: 62: Tempo(50);
+"62
+[e ( _Tempo (1 -> 50 `i ]
+"63
 }
 [e :U 1239 ]
-"20
+"17
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;main.c: 37: }
-[; ;main.c: 38: return;
-"38
+[; ;main.c: 63: }
+[; ;main.c: 64: return;
+"64
 [e $UE 1238  ]
-[; ;main.c: 39: }
-"39
+[; ;main.c: 65: }
+"65
 [e :UE 1238 ]
 }

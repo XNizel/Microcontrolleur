@@ -3,6 +3,7 @@
  main.c  \
 get_clav.h  \
 I2C.h  \
+EUSART.h  \
 user.h  \
 LCD.h  \
 system.h  \

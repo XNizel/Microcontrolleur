@@ -5,16 +5,16 @@
         <group>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/Interrupt.h</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/system.h</file>
+            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/EUSART.h</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/user.h</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/Interrupt.c</file>
-            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/LCD.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/get_clav.h</file>
+            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/LCD.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/user.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/CAN.c</file>
-            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/Configuration_bits.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/get_clav.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/CAN.h</file>
-            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/LCD.h</file>
+            <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/EUSART.c</file>
             <file>file:/D:/Utilisateurs/Bastien/Google%20Drive/Formations/CESI/S7/Microcontrolleur/TP2_V2.X/main.c</file>
         </group>
     </open-files>
