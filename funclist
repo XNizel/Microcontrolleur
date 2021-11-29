@@ -1,17 +1,13 @@
-___awdiv: CODE, 1154 0 188
-_UART: CODE, 24 0 178
-___awmod: CODE, 1342 0 168
-_main: CODE, 926 0 228
-_get_clav: CODE, 1962 0 22
-__initialization: CODE, 1820 0 44
-_home_LCD: CODE, 1902 0 32
-_Tempo: CODE, 1762 0 58
-_clavier_appuyer: CODE, 8 0 1754
-_I2C_Init: CODE, 1934 0 28
-_init_LCD: CODE, 654 0 272
-_Init: CODE, 1510 0 130
-_clear_LCD: CODE, 1870 0 32
-_INT_to_ASCII: CODE, 206 0 448
-_rx_data: CODE, 2004 0 10
-_tx_data: CODE, 2014 0 6
-Total: 3598
+_UART: CODE, 24 0 138
+_main: CODE, 600 0 152
+_get_clav: CODE, 1102 0 22
+__initialization: CODE, 932 0 44
+_home_LCD: CODE, 1014 0 32
+_Tempo: CODE, 874 0 58
+_clavier_appuyer: CODE, 8 0 592
+_I2C_Init: CODE, 1074 0 28
+_init_LCD: CODE, 166 0 272
+_Init: CODE, 752 0 122
+_clear_LCD: CODE, 982 0 32
+_tx_data: CODE, 1046 0 28
+Total: 1520

@@ -161,36 +161,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1160 . . . . ]
 "18277
 [v _INTCON2bits `VS1160 ~T0 @X0 0 e@4081 ]
-[s S761 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S761 . RTCCIE CCP1IE CCP2IE CTMUIE TX2IE RC2IE . TMR5GIE ]
-[s S762 :1 `uc 1 ]
-[n S762 . RXB0IE ]
-[s S763 :1 `uc 1 :1 `uc 1 ]
-[n S763 . . RXB1IE ]
-[s S764 :1 `uc 1 :1 `uc 1 ]
-[n S764 . . RXBNIE ]
-[s S765 :2 `uc 1 :1 `uc 1 ]
-[n S765 . . TXB0IE ]
-[s S766 :3 `uc 1 :1 `uc 1 ]
-[n S766 . . TXB1IE ]
-[s S767 :4 `uc 1 :1 `uc 1 ]
-[n S767 . . TXB2IE ]
-[s S768 :4 `uc 1 :1 `uc 1 ]
-[n S768 . . TXBNIE ]
-[u S760 `S761 1 `S762 1 `S763 1 `S764 1 `S765 1 `S766 1 `S767 1 `S768 1 ]
-[n S760 . . . . . . . . . ]
-"12294
-[v _PIE3bits `VS760 ~T0 @X0 0 e@4003 ]
-[s S774 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S774 . RTCCIP CCP1IP CCP2IP CTMUIP TX2IP RC2IP . TMR5GIP ]
-[s S775 :1 `uc 1 :1 `uc 1 ]
-[n S775 . . RXBNIP ]
-[s S776 :4 `uc 1 :1 `uc 1 ]
-[n S776 . . TXBNIP ]
-[u S773 `S774 1 `S775 1 `S776 1 ]
-[n S773 . . . . ]
-"12467
-[v _IPR3bits `VS773 ~T0 @X0 0 e@4005 ]
 "144 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18.h
 [v __delay `(v ~T0 @X0 0 ef1`ul ]
 [p i __delay ]
@@ -9332,9 +9302,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;user.h: 5: void Init(void);
-[; ;user.h: 6: void Tempo(int val);
-[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
+[; ;user.h: 6: void Init(void);
+[; ;user.h: 7: void Tempo(int val);
+[; ;user.h: 8: long map(long x, long in_min, long in_max, long out_min, long out_max);
 "5 user.c
 [v _Init `(v ~T0 @X0 1 ef ]
 {
@@ -9425,18 +9395,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 46: INTCONbits.INT0F = 0;
 "46
 [e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-[; ;user.c: 48: PIE3bits.RC2IE = 1;
-"48
-[e = . . _PIE3bits 0 5 -> -> 1 `i `uc ]
-[; ;user.c: 49: PIE3bits.TX2IE = 1;
-"49
-[e = . . _PIE3bits 0 4 -> -> 1 `i `uc ]
-[; ;user.c: 50: IPR3bits.RC2IP = 0;
-"50
-[e = . . _IPR3bits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 51: IPR3bits.TX2IP = 0;
-"51
-[e = . . _IPR3bits 0 4 -> -> 0 `i `uc ]
 [; ;user.c: 52: }
 "52
 [e :UE 1238 ]

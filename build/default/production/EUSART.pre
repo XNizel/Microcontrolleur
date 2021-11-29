@@ -11949,13 +11949,22 @@ void shift_cursor_left (void);
 void set_cursor_pos (int position);
 void INT_to_ASCII (int valeur_a_conv);
 
-# 5 "EUSART.c"
+# 6 "user.h"
+void Init(void);
+void Tempo(int val);
+long map(long x, long in_min, long in_max, long out_min, long out_max);
+
+# 6 "EUSART.c"
 void tx_data(unsigned char data){
+while(PIR3bits.RC2IF==0);
 TXREG2 = data;
+Tempo(5);
 }
 
 unsigned char rx_data(void){
+while(PIR3bits.TX2IF==0);
 return RCREG2;
+Tempo(5);
 }
 
 void rx_chaine (void){

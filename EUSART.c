@@ -1,13 +1,18 @@
 #include <xc.h>
 #include "EUSART.h"
 #include "LCD.h"
+#include "user.h"
 
 void tx_data(unsigned char data){
+    while(PIR3bits.RC2IF==0);
     TXREG2 = data;
+    Tempo(5);
 }
 
 unsigned char rx_data(void){
-    return RCREG2;    
+    while(PIR3bits.TX2IF==0);
+    return RCREG2;
+    Tempo(5);
 }
 
 void rx_chaine (void){

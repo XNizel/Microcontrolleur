@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"5 user.h
+"6 user.h
 [v _Init `(v ~T0 @X0 0 ef ]
 "22 LCD.h
 [v _init_LCD `(v ~T0 @X0 0 ef ]
@@ -12,15 +12,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _clear_LCD `(v ~T0 @X0 0 ef ]
 "24
 [v _home_LCD `(v ~T0 @X0 0 ef ]
-"28
-[v _INT_to_ASCII `(v ~T0 @X0 0 ef1`i ]
-"17
-[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
-"10 EUSART.h
-[v _rx_data `(uc ~T0 @X0 0 ef ]
-"9
+"9 EUSART.h
 [v _tx_data `(v ~T0 @X0 0 ef1`uc ]
-"6 user.h
+"7 user.h
 [v _Tempo `(v ~T0 @X0 0 ef1`i ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
@@ -9160,9 +9154,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;user.h: 5: void Init(void);
-[; ;user.h: 6: void Tempo(int val);
-[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
+[; ;user.h: 6: void Init(void);
+[; ;user.h: 7: void Tempo(int val);
+[; ;user.h: 8: long map(long x, long in_min, long in_max, long out_min, long out_max);
 "5 get_clav.h
 [v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
 [; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
@@ -9207,8 +9201,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;Interrupt.h: 5: int char_transmis = 0;
-[; ;Interrupt.h: 7: void high_priority interrupt clavier_appuyer (void);
-[; ;Interrupt.h: 9: void low_priority interrupt UART (void);
+[; ;Interrupt.h: 9: void high_priority interrupt clavier_appuyer (void);
+[; ;Interrupt.h: 11: void low_priority interrupt UART (void);
 "3 CAN.h
 [v _resultat_CAN `i ~T0 @X0 1 e ]
 [i _resultat_CAN
@@ -9268,95 +9262,68 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 15: I2C_Init();
 "15
 [e ( _I2C_Init ..  ]
-[; ;main.c: 17: while(1){
-"17
+"19
+[v _data_test `uc ~T0 @X0 1 a ]
+[; ;main.c: 19: unsigned char data_test;
+[; ;main.c: 22: while(1){
+"22
 [e :U 1240 ]
 {
-[; ;main.c: 19: get_clav();
-"19
-[e ( _get_clav ..  ]
-[; ;main.c: 20: clear_LCD();
-"20
-[e ( _clear_LCD ..  ]
-[; ;main.c: 21: home_LCD();
-"21
-[e ( _home_LCD ..  ]
-[; ;main.c: 22: INT_to_ASCII(resultat_CAN);
-"22
-[e ( _INT_to_ASCII (1 _resultat_CAN ]
-[; ;main.c: 24: if (clavier_a_traiter == 1) {
+[; ;main.c: 24: get_clav();
 "24
+[e ( _get_clav ..  ]
+[; ;main.c: 29: if (clavier_a_traiter == 1) {
+"29
 [e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
 {
-[; ;main.c: 26: clear_LCD();
-"26
-[e ( _clear_LCD ..  ]
-[; ;main.c: 27: home_LCD();
-"27
-[e ( _home_LCD ..  ]
-[; ;main.c: 28: LCD_DATA = 'A';
-"28
-[e = _LCD_DATA -> -> 65 `ui `uc ]
-[; ;main.c: 29: clavier_a_traiter = 0;
-"29
-[e = _clavier_a_traiter -> -> 0 `i `ui ]
-"30
-}
-[e :U 1242 ]
-[; ;main.c: 30: }
-[; ;main.c: 31: if (char_recu == 1){
+[; ;main.c: 31: clear_LCD();
 "31
-[e $ ! == _char_recu -> 1 `i 1243  ]
-{
-[; ;main.c: 32: RX_BUFFER[RX_INDEX] = rx_data();
+[e ( _clear_LCD ..  ]
+[; ;main.c: 32: home_LCD();
 "32
-[e = *U + &U _RX_BUFFER * -> -> _RX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ( _rx_data ..  ]
-[; ;main.c: 33: RX_INDEX += 1;
-"33
-[e =+ _RX_INDEX -> 1 `i ]
-[; ;main.c: 34: char_recu = 0;
+[e ( _home_LCD ..  ]
+[; ;main.c: 34: tx_data('H');
 "34
-[e = _char_recu -> 0 `i ]
+[e ( _tx_data (1 -> -> 72 `ui `uc ]
+[; ;main.c: 35: tx_data('e');
 "35
-}
-[e :U 1243 ]
-[; ;main.c: 35: }
-[; ;main.c: 37: if (RX_BUFFER[RX_INDEX - 1] == 'e'){
+[e ( _tx_data (1 -> -> 101 `ui `uc ]
+[; ;main.c: 36: tx_data('l');
+"36
+[e ( _tx_data (1 -> -> 108 `ui `uc ]
+[; ;main.c: 37: tx_data('l');
 "37
-[e $ ! == -> *U + &U _RX_BUFFER * -> -> - _RX_INDEX -> 1 `i `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux `ui -> 101 `ui 1244  ]
-{
-[; ;main.c: 38: if (char_transmis == 1){
+[e ( _tx_data (1 -> -> 108 `ui `uc ]
+[; ;main.c: 38: tx_data('o');
 "38
-[e $ ! == _char_transmis -> 1 `i 1245  ]
-{
-[; ;main.c: 39: tx_data(RX_BUFFER[TX_INDEX]);
+[e ( _tx_data (1 -> -> 111 `ui `uc ]
+[; ;main.c: 39: tx_data(0x0D);
 "39
-[e ( _tx_data (1 *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
-[; ;main.c: 40: TX_INDEX += 1;
+[e ( _tx_data (1 -> -> 13 `i `uc ]
+[; ;main.c: 40: tx_data(0x0A);
 "40
-[e =+ _TX_INDEX -> 1 `i ]
+[e ( _tx_data (1 -> -> 10 `i `uc ]
+[; ;main.c: 41: clavier_a_traiter = 0;
 "41
-}
-[e :U 1245 ]
+[e = _clavier_a_traiter -> -> 0 `i `ui ]
 "42
 }
-[e :U 1244 ]
-[; ;main.c: 41: }
+[e :U 1242 ]
 [; ;main.c: 42: }
-[; ;main.c: 62: Tempo(50);
-"62
-[e ( _Tempo (1 -> 50 `i ]
-"63
+[; ;main.c: 68: Tempo(100);
+"68
+[e ( _Tempo (1 -> 100 `i ]
+"69
 }
 [e :U 1239 ]
-"17
+"22
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;main.c: 63: }
-[; ;main.c: 64: return;
-"64
+[; ;main.c: 69: }
+[; ;main.c: 70: return;
+"70
 [e $UE 1238  ]
-[; ;main.c: 65: }
-"65
+[; ;main.c: 71: }
+"71
 [e :UE 1238 ]
 }

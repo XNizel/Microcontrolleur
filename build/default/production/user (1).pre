@@ -1,5 +1,5 @@
 
-# 1 "CAN.c"
+# 1 "user.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,20 +11923,54 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 3 "CAN.h"
-int resultat_CAN = 0;
+# 5 "user.h"
+void Init(void);
+void Tempo(int val);
+long map(long x, long in_min, long in_max, long out_min, long out_max);
 
-void get_CAN(void);
+# 5 "user.c"
+void Init() {
 
-# 4 "CAN.c"
-void get_CAN(void){
-if(ADCON0bits.GODONE == 0){
-resultat_CAN = ADRESH;
-resultat_CAN = resultat_CAN << 8;
-resultat_CAN = resultat_CAN + ADRESL;
-ADCON0bits.GODONE = 1;
+MEMCON=0xA0;
+
+
+ANCON0=0x00;
+ANCON0bits.ANSEL0 = 1;
+ADCON0bits.ADON = 1;
+ADCON1bits.VNCFG = 0;
+ADCON1bits.VCFG = 0;
+ADCON2bits.ADFM = 1;
+ANCON1=0x00;
+ANCON2=0x00;
+
+
+TRISB = 0x01;
+TRISA = 0x01;
+TRISG = 0x00;
+PORTD = 0;
+PORTE = 0;
+PORTH = 0;
+
+
+RCONbits.IPEN = 1;
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+INTCONbits.INT0IE = 1;
+INTCON2bits.INTEDG0 = 0;
+INTCONbits.INT0F = 0;
 }
-else{
-ADCON0bits.GODONE = 1;
+
+
+void Tempo (int val)
+{
+int i;
+for(i=0; i<val; i++)
+{
+_delay((unsigned long)((1)*(11059200/4000.0)));
 }
+}
+
+# 54
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

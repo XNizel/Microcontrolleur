@@ -11928,6 +11928,8 @@ int clav_a_traiter = 0;
 int char_recu = 0;
 int char_transmis = 0;
 
+
+
 void high_priority interrupt clavier_appuyer (void);
 
 void low_priority interrupt UART (void);
@@ -11943,22 +11945,37 @@ unsigned char val_clavier = 0;
 void get_clav(void);
 unsigned char clav_to_ascii(void);
 
-# 6 "Interrupt.c"
+# 3 "EUSART.h"
+unsigned char data1;
+unsigned char TX_BUFFER[20] = "abcde";
+int TX_INDEX = 0;
+unsigned char RX_BUFFER[20];
+int RX_INDEX = 0;
+
+void tx_data(unsigned char data);
+unsigned char rx_data(void);
+void tx_chaine (void);
+void rx_chaine (void);
+
+# 7 "Interrupt.c"
 void high_priority interrupt clavier_appuyer (void){
 if (INTCONbits.INT0IF == 1){
 clavier_a_traiter = 1;
 INTCONbits.INT0IF = 0;
 }
-}
 
-void low_priority interrupt UART (void){
 if(PIR3bits.RC2IF == 1){
-char_recu = 1;
+
 PIR3bits.RC2IF = 0;
+char_recu = 1;
 }
 
 if(PIR3bits.TX2IF == 1){
 char_transmis = 1;
 PIR3bits.TX2IF = 0;
 }
+}
+
+void low_priority interrupt UART (void){
+
 }

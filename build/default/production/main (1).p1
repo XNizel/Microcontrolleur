@@ -1,12 +1,29 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"666 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _TXREG2 `Vuc ~T0 @X0 0 e@3868 ]
-"685
-[v _RCREG2 `Vuc ~T0 @X0 0 e@3869 ]
-"17 LCD.h
-[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
-"25
-[v _shift_cursor_right `(v ~T0 @X0 0 ef ]
+[p mainexit ]
+"5 user.h
+[v _Init `(v ~T0 @X0 0 ef ]
+"22 LCD.h
+[v _init_LCD `(v ~T0 @X0 0 ef ]
+"3 I2C.h
+[v _I2C_Init `(v ~T0 @X0 0 ef ]
+"9 get_clav.h
+[v _get_clav `(v ~T0 @X0 0 ef ]
+"23 LCD.h
+[v _clear_LCD `(v ~T0 @X0 0 ef ]
+"24
+[v _home_LCD `(v ~T0 @X0 0 ef ]
+"28
+[v _INT_to_ASCII `(v ~T0 @X0 0 ef1`i ]
+"5 CAN.h
+[v _get_CAN `(v ~T0 @X0 0 ef ]
+"4 I2C.h
+[v _I2C_Write `(v ~T0 @X0 0 ef1`i ]
+"7 user.h
+[v _map `(l ~T0 @X0 0 ef5`l`l`l`l`l ]
+"9443 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
+[v _PORTG `Vuc ~T0 @X0 0 e@3974 ]
+"6 user.h
+[v _Tempo `(v ~T0 @X0 0 ef1`i ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9145,41 +9162,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-"3 EUSART.h
-[v _data1 `uc ~T0 @X0 1 e ]
-[; ;EUSART.h: 3: unsigned char data1;
-"4
-[v _TX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[i _TX_BUFFER
-:U ..
--> 97 `c
--> 98 `c
--> 99 `c
--> 100 `c
--> 101 `c
--> 0 `c
-..
-]
-[; ;EUSART.h: 4: unsigned char TX_BUFFER[20] = "abcde";
-"5
-[v _TX_INDEX `i ~T0 @X0 1 e ]
-[i _TX_INDEX
--> 0 `i
-]
-[; ;EUSART.h: 5: int TX_INDEX = 0;
-"6
-[v _RX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[; ;EUSART.h: 6: unsigned char RX_BUFFER[20];
+[; ;user.h: 5: void Init(void);
+[; ;user.h: 6: void Tempo(int val);
+[; ;user.h: 7: long map(long x, long in_min, long in_max, long out_min, long out_max);
+"5 get_clav.h
+[v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
+[; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
 "7
-[v _RX_INDEX `i ~T0 @X0 1 e ]
-[i _RX_INDEX
--> 0 `i
+[v _val_clavier `uc ~T0 @X0 1 e ]
+[i _val_clavier
+-> -> 0 `i `uc
 ]
-[; ;EUSART.h: 7: int RX_INDEX = 0;
-[; ;EUSART.h: 9: void tx_data(unsigned char data);
-[; ;EUSART.h: 10: unsigned char rx_data(void);
-[; ;EUSART.h: 11: void tx_chaine (void);
-[; ;EUSART.h: 12: void rx_chaine (void);
+[; ;get_clav.h: 7: unsigned char val_clavier = 0;
+[; ;get_clav.h: 9: void get_clav(void);
+[; ;get_clav.h: 10: unsigned char clav_to_ascii(void);
 [; ;LCD.h: 17: extern far unsigned char LCD_DATA @ 0x1A0002;
 [; ;LCD.h: 18: extern far unsigned char LCD_FUNC @ 0x1A0000;
 "20 LCD.h
@@ -9192,92 +9188,103 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 26: void shift_cursor_left (void);
 [; ;LCD.h: 27: void set_cursor_pos (int position);
 [; ;LCD.h: 28: void INT_to_ASCII (int valeur_a_conv);
-"5 EUSART.c
-[v _tx_data `(v ~T0 @X0 1 ef1`uc ]
+"1 system.h
+[v _clavier_a_traiter `ui ~T0 @X0 1 e ]
+[; ;system.h: 1: unsigned int clavier_a_traiter;
+"3 Interrupt.h
+[v _clav_a_traiter `i ~T0 @X0 1 e ]
+[i _clav_a_traiter
+-> 0 `i
+]
+[; ;Interrupt.h: 3: int clav_a_traiter = 0;
+[; ;Interrupt.h: 5: void high_priority interrupt clavier_appuyer (void);
+"3 CAN.h
+[v _resultat_CAN `i ~T0 @X0 1 e ]
+[i _resultat_CAN
+-> 0 `i
+]
+[; ;CAN.h: 3: int resultat_CAN = 0;
+[; ;CAN.h: 5: void get_CAN(void);
+[; ;I2C.h: 3: void I2C_Init(void);
+[; ;I2C.h: 4: void I2C_Write(int VAL);
+"12 main.c
+[v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;EUSART.c: 5: void tx_data(unsigned char data){
-[e :U _tx_data ]
-[v _data `uc ~T0 @X0 1 r1 ]
+[; ;main.c: 12: void main(void) {
+[e :U _main ]
 [f ]
-[; ;EUSART.c: 6: TXREG2 = data;
-"6
-[e = _TXREG2 _data ]
-[; ;EUSART.c: 7: }
-"7
-[e :UE 1238 ]
-}
-"9
-[v _rx_data `(uc ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 9: unsigned char rx_data(void){
-[e :U _rx_data ]
-[f ]
-[; ;EUSART.c: 10: return RCREG2;
-"10
-[e ) _RCREG2 ]
-[e $UE 1239  ]
-[; ;EUSART.c: 11: }
-"11
-[e :UE 1239 ]
-}
+[; ;main.c: 13: Init();
 "13
-[v _rx_chaine `(v ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 13: void rx_chaine (void){
-[e :U _rx_chaine ]
-[f ]
-[; ;EUSART.c: 14: do{
+[e ( _Init ..  ]
+[; ;main.c: 14: init_LCD();
 "14
-[e :U 1243 ]
-{
-[; ;EUSART.c: 15: RX_BUFFER[RX_INDEX] = rx_data;
+[e ( _init_LCD ..  ]
+[; ;main.c: 15: I2C_Init();
 "15
-[e = *U + &U _RX_BUFFER * -> -> _RX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux -> &U _rx_data `uc ]
-[; ;EUSART.c: 16: RX_INDEX += 1;
-"16
-[e =+ _RX_INDEX -> 1 `i ]
+[e ( _I2C_Init ..  ]
+[; ;main.c: 17: while(1){
 "17
-}
-[; ;EUSART.c: 17: }while(RX_BUFFER[RX_INDEX - 1] != 'e');
-[e $ != -> *U + &U _RX_BUFFER * -> -> - _RX_INDEX -> 1 `i `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux `ui -> 101 `ui 1243  ]
-[e :U 1242 ]
-[; ;EUSART.c: 18: }
+[e :U 1240 ]
+{
+[; ;main.c: 18: get_clav();
 "18
-[e :UE 1240 ]
-}
+[e ( _get_clav ..  ]
+[; ;main.c: 19: clear_LCD();
+"19
+[e ( _clear_LCD ..  ]
+[; ;main.c: 20: home_LCD();
 "20
-[v _tx_chaine `(v ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 20: void tx_chaine (void){
-[e :U _tx_chaine ]
-[f ]
-[; ;EUSART.c: 21: for(TX_INDEX = 0; TX_INDEX < 9; TX_INDEX++){
+[e ( _home_LCD ..  ]
+[; ;main.c: 21: INT_to_ASCII(resultat_CAN);
 "21
-{
-[e = _TX_INDEX -> 0 `i ]
-[e $ < _TX_INDEX -> 9 `i 1245  ]
-[e $U 1246  ]
-[e :U 1245 ]
-{
-[; ;EUSART.c: 22: tx_data(RX_BUFFER[TX_INDEX]);
+[e ( _INT_to_ASCII (1 _resultat_CAN ]
+[; ;main.c: 22: if (clavier_a_traiter == 1) {
 "22
-[e ( _tx_data (1 *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
-[; ;EUSART.c: 23: LCD_DATA = RX_BUFFER[TX_INDEX];
-"23
-[e = _LCD_DATA *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
-[; ;EUSART.c: 24: shift_cursor_right();
+[e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
+{
+[; ;main.c: 24: clavier_a_traiter = 0;
 "24
-[e ( _shift_cursor_right ..  ]
+[e = _clavier_a_traiter -> -> 0 `i `ui ]
 "25
 }
-"21
-[e ++ _TX_INDEX -> 1 `i ]
-[e $ < _TX_INDEX -> 9 `i 1245  ]
-[e :U 1246 ]
-"25
+[e :U 1242 ]
+[; ;main.c: 25: }
+[; ;main.c: 27: get_CAN();
+"27
+[e ( _get_CAN ..  ]
+[; ;main.c: 28: I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
+"28
+[e ( _I2C_Write (1 -> ( _map (4 , , , , -> _resultat_CAN `l -> -> 0 `i `l -> -> 4096 `i `l -> -> 0 `i `l -> -> 255 `i `l `i ]
+[; ;main.c: 29: if(resultat_CAN > 2867){
+"29
+[e $ ! > _resultat_CAN -> 2867 `i 1243  ]
+{
+[; ;main.c: 30: PORTG = 1;
+"30
+[e = _PORTG -> -> 1 `i `uc ]
+"31
 }
-[; ;EUSART.c: 25: }
-[; ;EUSART.c: 26: }
-"26
-[e :UE 1244 ]
+[; ;main.c: 31: }
+[e $U 1244  ]
+"32
+[e :U 1243 ]
+[; ;main.c: 32: else PORTG = 0;
+[e = _PORTG -> -> 0 `i `uc ]
+[e :U 1244 ]
+[; ;main.c: 34: Tempo(150);
+"34
+[e ( _Tempo (1 -> 150 `i ]
+"35
+}
+[e :U 1239 ]
+"17
+[e $U 1240  ]
+[e :U 1241 ]
+[; ;main.c: 35: }
+[; ;main.c: 36: return;
+"36
+[e $UE 1238  ]
+[; ;main.c: 37: }
+"37
+[e :UE 1238 ]
 }

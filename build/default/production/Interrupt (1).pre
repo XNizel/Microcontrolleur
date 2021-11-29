@@ -1,5 +1,5 @@
 
-# 1 "Configuration_bits.c"
+# 1 "Interrupt.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,18 +11923,26 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
+# 3 "Interrupt.h"
+int clav_a_traiter = 0;
 
-# 7 "Configuration_bits.c"
-#pragma config CONFIG1L = 0x1D
-#pragma config CONFIG1H = 0x03
-#pragma config CONFIG2L = 0x61
-#pragma config CONFIG2H = 0x00
-#pragma config CONFIG3L = 0x01
-#pragma config CONFIG3H = 0x8B
-#pragma config CONFIG4L = 0x81
-#pragma config CONFIG5L = 0xFF
-#pragma config CONFIG5H = 0xC0
-#pragma config CONFIG6L = 0xFF
-#pragma config CONFIG6H = 0xE0
-#pragma config CONFIG7L = 0xFF
-#pragma config CONFIG7H = 0x40
+void high_priority interrupt clavier_appuyer (void);
+
+# 1 "system.h"
+unsigned int clavier_a_traiter;
+
+# 5 "get_clav.h"
+far unsigned char CLAVIER @ 0x180000;
+
+unsigned char val_clavier = 0;
+
+void get_clav(void);
+unsigned char clav_to_ascii(void);
+
+# 6 "Interrupt.c"
+void high_priority interrupt clavier_appuyer (void){
+if (INTCONbits.INT0IF == 1){
+clavier_a_traiter = 1;
+INTCONbits.INT0IF = 0;
+}
+}

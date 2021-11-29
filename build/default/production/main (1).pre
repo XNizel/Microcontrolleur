@@ -1,5 +1,5 @@
 
-# 1 "get_clav.c"
+# 1 "main.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,6 +11923,11 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
+# 5 "user.h"
+void Init(void);
+void Tempo(int val);
+long map(long x, long in_min, long in_max, long out_min, long out_max);
+
 # 5 "get_clav.h"
 far unsigned char CLAVIER @ 0x180000;
 
@@ -11931,22 +11936,61 @@ unsigned char val_clavier = 0;
 void get_clav(void);
 unsigned char clav_to_ascii(void);
 
-# 9 "get_clav.c"
-void get_clav(void) {
+# 17 "LCD.h"
+extern far unsigned char LCD_DATA @ 0x1A0002;
+extern far unsigned char LCD_FUNC @ 0x1A0000;
 
-val_clavier = (CLAVIER + 0x30);
+int buffer_ASCII[5];
+
+void init_LCD(void);
+void clear_LCD (void);
+void home_LCD (void);
+void shift_cursor_right (void);
+void shift_cursor_left (void);
+void set_cursor_pos (int position);
+void INT_to_ASCII (int valeur_a_conv);
+
+# 1 "system.h"
+unsigned int clavier_a_traiter;
+
+# 3 "Interrupt.h"
+int clav_a_traiter = 0;
+
+void high_priority interrupt clavier_appuyer (void);
+
+# 3 "CAN.h"
+int resultat_CAN = 0;
+
+void get_CAN(void);
+
+# 3 "I2C.h"
+void I2C_Init(void);
+void I2C_Write(int VAL);
+
+# 12 "main.c"
+void main(void) {
+Init();
+init_LCD();
+I2C_Init();
+
+while(1){
+get_clav();
+clear_LCD();
+home_LCD();
+INT_to_ASCII(resultat_CAN);
+if (clavier_a_traiter == 1) {
+
+clavier_a_traiter = 0;
 }
 
-# 21
-unsigned char clav_to_ascii(void) {
-unsigned char val = 1;
-
-if (val >= 0 || val <= 9) {
-val = val + 0x30;
+get_CAN();
+I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
+if(resultat_CAN > 2867){
+PORTG = 1;
 }
-else if (val >= 10 || val <= 15) {
-val = val + 0x41;
-}
+else PORTG = 0;
 
-return val;
+Tempo(150);
+}
+return;
 }

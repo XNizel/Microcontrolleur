@@ -44,11 +44,11 @@ void Init() {
     INTCONbits.INT0IE = 1;
     INTCON2bits.INTEDG0 = 0;
     INTCONbits.INT0F = 0;
-    
+    /*
     PIE3bits.RC2IE = 1;     //Interuption RX UART
     PIE3bits.TX2IE = 1;     //Interuption TX UART
-    IPR3bits.RC2IP = 0;     //Basse prioritée
-    IPR3bits.TX2IP = 0;     //Basse prioritée
+    IPR3bits.RC2IP = 1;     //Basse prioritée
+    IPR3bits.TX2IP = 1;     //Basse prioritée*/
 }
 
 

@@ -14,6 +14,11 @@ void main(void) {
     init_LCD();
     I2C_Init();
     
+    
+    
+    unsigned char data_test;
+
+    
     while(1){       
     // ---- TP3 ----
         get_clav();
@@ -25,21 +30,22 @@ void main(void) {
             //Trucs a faire pour l'interuption avec appui du clavier
             clear_LCD();
             home_LCD();
-            LCD_DATA = 'A';
+            //LCD_DATA = 'A';
+            tx_data('H');
+            tx_data('e');
+            tx_data('l');
+            tx_data('l');
+            tx_data('o');
+            tx_data(0x0D);
+            tx_data(0x0A);
             clavier_a_traiter = 0; 
-        }
-        if (char_recu == 1){
-            RX_BUFFER[RX_INDEX] = rx_data();
-            RX_INDEX += 1;
-            char_recu = 0;
-        }
+        }        
         
-        if (RX_BUFFER[RX_INDEX - 1] == 'e'){
-            if (char_transmis == 1){
-                tx_data(RX_BUFFER[TX_INDEX]);
-                TX_INDEX += 1;
-            }
-        }
+        
+        
+        //data_test = rx_data();
+        //tx_data(data_test);
+        
         /*
         get_CAN();
         I2C_Write(map(resultat_CAN, 0, 4096, 0, 255));
@@ -59,7 +65,7 @@ void main(void) {
         
         
         
-        Tempo(50);
+        Tempo(100);
     }
     return;
 }
