@@ -109,14 +109,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "11192
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+[s S721 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S721 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+[u S720 `S721 1 ]
+[n S720 . . ]
+"11209
+[v _TRISBbits `VS720 ~T0 @X0 0 e@3987 ]
+[s S723 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S723 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+[u S722 `S723 1 ]
+[n S722 . . ]
+"11270
+[v _TRISCbits `VS722 ~T0 @X0 0 e@3988 ]
 "11492
 [v _TRISG `Vuc ~T0 @X0 0 e@3992 ]
-"8614
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"8854
-[v _PORTE `Vuc ~T0 @X0 0 e@3972 ]
-"9673
-[v _PORTH `Vuc ~T0 @X0 0 e@3975 ]
+[s S719 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S719 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+[u S718 `S719 1 ]
+[n S718 . . ]
+"11148
+[v _TRISAbits `VS718 ~T0 @X0 0 e@3986 ]
+"11596
+[v _TRISJ `Vuc ~T0 @X0 0 e@3994 ]
 [s S1084 :1 `uc 1 ]
 [n S1084 . NOT_BOR ]
 [s S1085 :1 `uc 1 :1 `uc 1 ]
@@ -161,6 +175,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1160 . . . . ]
 "18277
 [v _INTCON2bits `VS1160 ~T0 @X0 0 e@4081 ]
+[s S1107 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1107 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+[s S1108 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1108 . T0PS0 T0PS1 T0PS2 ]
+[u S1106 `S1107 1 `S1108 1 ]
+[n S1106 . . . ]
+"17564
+[v _T0CONbits `VS1106 ~T0 @X0 0 e@4053 ]
 "144 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18.h
 [v __delay `(v ~T0 @X0 0 ef1`ul ]
 [p i __delay ]
@@ -9302,9 +9324,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;user.h: 6: void Init(void);
-[; ;user.h: 7: void Tempo(int val);
-[; ;user.h: 8: long map(long x, long in_min, long in_max, long out_min, long out_max);
+"5 user.h
+[v _valeur_test `i ~T0 @X0 1 e ]
+[; ;user.h: 5: int valeur_test;
+[; ;user.h: 7: void Init(void);
+[; ;user.h: 8: void Tempo(int val);
+[; ;user.h: 9: long map(long x, long in_min, long in_max, long out_min, long out_max);
 "5 user.c
 [v _Init `(v ~T0 @X0 1 ef ]
 {
@@ -9359,84 +9384,111 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 28: RCSTA2bits.CREN = 1;
 "28
 [e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
-[; ;user.c: 32: TRISA = 0x01;
-"32
-[e = _TRISA -> -> 1 `i `uc ]
-[; ;user.c: 33: TRISB = 0x01;
+[; ;user.c: 33: TRISA = 0xFF;
 "33
-[e = _TRISB -> -> 1 `i `uc ]
-[; ;user.c: 34: TRISG = 0x00;
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;user.c: 34: TRISB = 0xFF;
 "34
-[e = _TRISG -> -> 0 `i `uc ]
-[; ;user.c: 36: PORTD = 0;
-"36
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;user.c: 37: PORTE = 0;
-"37
-[e = _PORTE -> -> 0 `i `uc ]
-[; ;user.c: 38: PORTH = 0;
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;user.c: 35: TRISBbits.TRISB1 = 1;
+"35
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
+[; ;user.c: 38: TRISCbits.TRISC7 = 1;
 "38
-[e = _PORTH -> -> 0 `i `uc ]
-[; ;user.c: 41: RCONbits.IPEN = 1;
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+[; ;user.c: 39: TRISCbits.TRISC6 = 0;
+"39
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 41: TRISCbits.TRISC2 = 0;
 "41
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;user.c: 42: INTCONbits.GIE = 1;
-"42
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;user.c: 43: INTCONbits.PEIE = 1;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 43: TRISG = 0x00;
 "43
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;user.c: 44: INTCONbits.INT0IE = 1;
+[e = _TRISG -> -> 0 `i `uc ]
+[; ;user.c: 44: TRISGbits.TRISG1 = 1;
 "44
-[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;user.c: 45: INTCON2bits.INTEDG0 = 0;
+[e = . . _TRISGbits 0 1 -> -> 1 `i `uc ]
+[; ;user.c: 45: TRISAbits.TRISA4 = 1;
 "45
+[e = . . _TRISAbits 0 4 -> -> 1 `i `uc ]
+[; ;user.c: 47: TRISJ = 0x00;
+"47
+[e = _TRISJ -> -> 0 `i `uc ]
+[; ;user.c: 55: RCONbits.IPEN = 1;
+"55
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;user.c: 56: INTCONbits.GIE = 1;
+"56
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;user.c: 57: INTCONbits.PEIE = 1;
+"57
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;user.c: 58: INTCONbits.INT0IE = 1;
+"58
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;user.c: 59: INTCON2bits.INTEDG0 = 0;
+"59
 [e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;user.c: 46: INTCONbits.INT0F = 0;
-"46
+[; ;user.c: 60: INTCONbits.INT0F = 0;
+"60
 [e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-[; ;user.c: 52: }
-"52
+[; ;user.c: 69: T0CONbits.T08BIT = 0;
+"69
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 70: T0CONbits.T0CS = 0;
+"70
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 71: T0CONbits.T0SE = 0;
+"71
+[e = . . _T0CONbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 72: T0CONbits.PSA = 0;
+"72
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 73: T0CONbits.T0PS = 0x6;
+"73
+[e = . . _T0CONbits 0 0 -> -> 6 `i `uc ]
+[; ;user.c: 75: }
+"75
 [e :UE 1238 ]
 }
-"55
+"78
 [v _Tempo `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;user.c: 55: void Tempo (int val) {
+[; ;user.c: 78: void Tempo (int val) {
 [e :U _Tempo ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"56
+"79
 [v _i `i ~T0 @X0 1 a ]
-[; ;user.c: 56: int i;
-[; ;user.c: 57: for(i=0; i<val; i++){
-"57
+[; ;user.c: 79: int i;
+[; ;user.c: 80: for(i=0; i<val; i++){
+"80
 {
 [e = _i -> 0 `i ]
 [e $U 1243  ]
 [e :U 1240 ]
 {
-[; ;user.c: 58: _delay((unsigned long)((1)*(11059200/4000.0)));
-"58
+[; ;user.c: 81: _delay((unsigned long)((1)*(11059200/4000.0)));
+"81
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 11059200 `l `d .4000.0 `ul ]
-"59
+"82
 }
-"57
+"80
 [e ++ _i -> 1 `i ]
 [e :U 1243 ]
 [e $ < _i _val 1240  ]
 [e :U 1241 ]
-"59
+"82
 }
-[; ;user.c: 59: }
-[; ;user.c: 60: }
-"60
+[; ;user.c: 82: }
+[; ;user.c: 83: }
+"83
 [e :UE 1239 ]
 }
-"71
+"94
 [v _map `(l ~T0 @X0 1 ef5`l`l`l`l`l ]
 {
-[; ;user.c: 71: long map(long x, long in_min, long in_max, long out_min, long out_max) {
+[; ;user.c: 94: long map(long x, long in_min, long in_max, long out_min, long out_max) {
 [e :U _map ]
 [v _x `l ~T0 @X0 1 r1 ]
 [v _in_min `l ~T0 @X0 1 r2 ]
@@ -9444,11 +9496,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _out_min `l ~T0 @X0 1 r4 ]
 [v _out_max `l ~T0 @X0 1 r5 ]
 [f ]
-[; ;user.c: 72: return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-"72
+[; ;user.c: 95: return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+"95
 [e ) + / * - _x _in_min - _out_max _out_min - _in_max _in_min _out_min ]
 [e $UE 1244  ]
-[; ;user.c: 73: }
-"73
+[; ;user.c: 96: }
+"96
 [e :UE 1244 ]
 }

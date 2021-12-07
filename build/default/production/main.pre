@@ -11923,7 +11923,9 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 6 "user.h"
+# 5 "user.h"
+int valeur_test;
+
 void Init(void);
 void Tempo(int val);
 long map(long x, long in_min, long in_max, long out_min, long out_max);
@@ -11936,11 +11938,11 @@ unsigned char val_clavier = 0;
 void get_clav(void);
 unsigned char clav_to_ascii(void);
 
-# 17 "LCD.h"
+# 18 "LCD.h"
 extern far unsigned char LCD_DATA @ 0x1A0002;
 extern far unsigned char LCD_FUNC @ 0x1A0000;
 
-int buffer_ASCII[5];
+int buffer_ASCII[6];
 
 void init_LCD(void);
 void clear_LCD (void);
@@ -11948,7 +11950,8 @@ void home_LCD (void);
 void shift_cursor_right (void);
 void shift_cursor_left (void);
 void set_cursor_pos (int position);
-void INT_to_ASCII (int valeur_a_conv);
+void set_cursor_line_2 (void);
+void INT_to_ASCII (int valeur_a_conv, int lenght_value);
 
 # 1 "system.h"
 unsigned int clavier_a_traiter;
@@ -11958,16 +11961,13 @@ int clav_a_traiter = 0;
 int char_recu = 0;
 int char_transmis = 0;
 
-
-
+# 11
 void high_priority interrupt clavier_appuyer (void);
 
 void low_priority interrupt UART (void);
 
-# 3 "CAN.h"
-int resultat_CAN = 0;
-
-void get_CAN(void);
+# 5 "CAN.h"
+int get_CAN(void);
 
 # 3 "I2C.h"
 void I2C_Init(void);
@@ -11984,12 +11984,46 @@ void tx_data(unsigned char data);
 unsigned char rx_data(void);
 void tx_chaine (void);
 void rx_chaine (void);
+void tx_int (unsigned char valeur_a_transmettre);
 
-# 12 "main.c"
+# 5 "Timer.h"
+int get_Timer_Value(void);
+
+# 13 "main.c"
 void main(void) {
 Init();
 init_LCD();
 I2C_Init();
+
+int UART_Buffer[3];
+
+tx_data('S');
+tx_data('e');
+tx_data('r');
+tx_data('i');
+tx_data('a');
+tx_data('l');
+tx_data(0x0D);
+tx_data(0x0A);
+
+clear_LCD();
+home_LCD();
+set_cursor_line_2();
+LCD_DATA = 'S';
+Tempo(2);
+LCD_DATA = '_';
+Tempo(2);
+LCD_DATA = 'V';
+Tempo(2);
+LCD_DATA = 'E';
+Tempo(2);
+LCD_DATA = 'N';
+Tempo(2);
+LCD_DATA = 'T';
+Tempo(2);
+LCD_DATA = '=';
+Tempo(2);
+
 
 
 
@@ -11998,28 +12032,52 @@ unsigned char data_test;
 
 while(1){
 
-get_clav();
-
-
-
-
+# 73
 if (clavier_a_traiter == 1) {
 
+# 94
 clear_LCD();
 home_LCD();
-
-tx_data('H');
-tx_data('e');
-tx_data('l');
-tx_data('l');
-tx_data('o');
-tx_data(0x0D);
-tx_data(0x0A);
+valeur_test = get_Timer_Value();
+INT_to_ASCII(valeur_test, 4);
+TMR0H = 0;
+TMR0L = 0;
 clavier_a_traiter = 0;
 }
 
-# 68
-Tempo(100);
+# 128
+LATCbits.LATC2 = 1;
+
+# 136
+T0CONbits.TMR0ON = 0;
+while (PORTBbits.RB1 == 1) {
+
+}
+while (PORTBbits.RB1 == 0) {
+}
+T0CONbits.TMR0ON = 1;
+
+while (PORTBbits.RB1 == 1) {
+
+}
+T0CONbits.TMR0ON = 0;
+
+
+
+set_cursor_line_2();
+set_cursor_pos(7);
+valeur_test = (get_Timer_Value() * 46.3);
+INT_to_ASCII(valeur_test, 4);
+LCD_DATA = 'u';
+Tempo(2);
+LCD_DATA = 's';
+Tempo(2);
+TMR0H = 0;
+TMR0L = 0;
+
+
+
+Tempo(25);
 }
 return;
 }

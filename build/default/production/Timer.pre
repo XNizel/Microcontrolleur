@@ -1,5 +1,5 @@
 
-# 1 "EUSART.c"
+# 1 "Timer.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,34 +11923,6 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 3 "EUSART.h"
-unsigned char data1;
-unsigned char TX_BUFFER[20] = "abcde";
-int TX_INDEX = 0;
-unsigned char RX_BUFFER[20];
-int RX_INDEX = 0;
-
-void tx_data(unsigned char data);
-unsigned char rx_data(void);
-void tx_chaine (void);
-void rx_chaine (void);
-void tx_int (unsigned char valeur_a_transmettre);
-
-# 18 "LCD.h"
-extern far unsigned char LCD_DATA @ 0x1A0002;
-extern far unsigned char LCD_FUNC @ 0x1A0000;
-
-int buffer_ASCII[6];
-
-void init_LCD(void);
-void clear_LCD (void);
-void home_LCD (void);
-void shift_cursor_right (void);
-void shift_cursor_left (void);
-void set_cursor_pos (int position);
-void set_cursor_line_2 (void);
-void INT_to_ASCII (int valeur_a_conv, int lenght_value);
-
 # 5 "user.h"
 int valeur_test;
 
@@ -11958,46 +11930,18 @@ void Init(void);
 void Tempo(int val);
 long map(long x, long in_min, long in_max, long out_min, long out_max);
 
-# 6 "EUSART.c"
-void tx_data(unsigned char data){
+# 5 "Timer.h"
+int get_Timer_Value(void);
 
-while (!TXSTA2bits.TRMT2);
-TXREG2 = data;
-Tempo(5);
-}
+# 5 "Timer.c"
+int get_Timer_Value(void){
+int timer_valueL = 0;
+int timer_value = 0;
+timer_valueL = TMR0L;
 
-unsigned char rx_data(void){
-while(PIR3bits.TX2IF==0);
-return RCREG2;
-Tempo(5);
-}
-
-void rx_chaine (void){
-do{
-RX_BUFFER[RX_INDEX] = rx_data;
-RX_INDEX += 1;
-}while(RX_BUFFER[RX_INDEX - 1] != 'e');
+timer_value = TMR0H;
+timer_value = timer_value << 8;
+timer_value = timer_value + timer_valueL;
+return timer_value;
 }
 
-void tx_chaine (void){
-for(TX_INDEX = 0; TX_INDEX < 9; TX_INDEX++){
-tx_data(RX_BUFFER[TX_INDEX]);
-LCD_DATA = RX_BUFFER[TX_INDEX];
-shift_cursor_right();
-}
-}
-void tx_int (unsigned char valeur_a_transmettre) {
-unsigned char buffer[5];
-
-for (int i=0; i<5; i++) {
-buffer[i] = valeur_a_transmettre % 10;
-valeur_a_transmettre = valeur_a_transmettre / 10;
-}
-
-for (int i=5; i>0; i++) {
-tx_data(buffer[i] + 0x30);
-}
-
-tx_data(0x0D);
-tx_data(0x0A);
-}

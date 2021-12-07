@@ -7,5 +7,6 @@ EUSART.h  \
 user.h  \
 LCD.h  \
 system.h  \
+Timer.h  \
 CAN.h  \
 Interrupt.h 

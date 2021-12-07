@@ -29,13 +29,27 @@ void Init() {
     
     
     // Définitions des E/S
-    TRISA = 0x01;       //0A en entrée pour V_POT
-    TRISB = 0x01;       //0B en entrée pout INT0
-    TRISG = 0x00;       //0G en sortie pour la LED du VUMETER
+    //TRISA = 0x01;       //  0A en entrée pour V_POT
+    TRISA = 0xFF;
+    TRISB = 0xFF;       //  0B en entrée pout INT0 - 1B en entrée pour S_VENT
+    TRISBbits.TRISB1 = 1;
     
+    // Ports UART1
+    TRISCbits.TRISC7 = 1; // RX1 en entrée 
+    TRISCbits.TRISC6 = 0; // TX1 en sortie
+    
+    TRISCbits.TRISC2 = 0; // configuration du port RC2 en sortie
+    
+    TRISG = 0x00;       //  0G en sortie pour la LED du VUMETER
+    TRISGbits.TRISG1 = 1;
+    TRISAbits.TRISA4 = 1;
+    
+    TRISJ = 0x00;
+    
+    /*
     PORTD = 0;
     PORTE = 0;
-    PORTH = 0;
+    PORTH = 0;*/
      
     // Configuration des interuptions
     RCONbits.IPEN = 1;
@@ -49,6 +63,15 @@ void Init() {
     PIE3bits.TX2IE = 1;     //Interuption TX UART
     IPR3bits.RC2IP = 1;     //Basse prioritée
     IPR3bits.TX2IP = 1;     //Basse prioritée*/
+    
+    //  Configuration du timer
+    
+    T0CONbits.T08BIT = 0;     //   Timer en 16bits
+    T0CONbits.T0CS = 0;       //  Clk interne FOSC/4
+    T0CONbits.T0SE = 0;       //  Detction de front montant
+    T0CONbits.PSA = 0;
+    T0CONbits.T0PS = 0x6;     //  Div par 128  1 tick toutes les 46,3us  //2,89us
+    
 }
 
 

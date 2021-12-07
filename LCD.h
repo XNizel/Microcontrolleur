@@ -12,12 +12,13 @@
 #define SHIFT_CURSOR_LEFT 0x10
 #define SET_FUNC_8BIT_2LINE_5x10 0x3C
 #define SET_FUNC_8BIT_2LINE_5x7 0x38
+#define LINE_2 0xC0
 
 
 extern far unsigned char LCD_DATA @ 0x1A0002;
 extern far unsigned char LCD_FUNC @ 0x1A0000;
 
-int buffer_ASCII[5];
+int buffer_ASCII[6];
 
 void init_LCD(void);
 void clear_LCD (void);
@@ -25,4 +26,6 @@ void home_LCD (void);
 void shift_cursor_right (void);
 void shift_cursor_left (void);
 void set_cursor_pos (int position);
-void INT_to_ASCII (int valeur_a_conv);
+void set_cursor_line_2 (void);
+void INT_to_ASCII (int valeur_a_conv, int lenght_value);
+

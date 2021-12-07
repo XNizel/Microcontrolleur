@@ -11928,8 +11928,7 @@ int clav_a_traiter = 0;
 int char_recu = 0;
 int char_transmis = 0;
 
-
-
+# 11
 void high_priority interrupt clavier_appuyer (void);
 
 void low_priority interrupt UART (void);
@@ -11956,6 +11955,7 @@ void tx_data(unsigned char data);
 unsigned char rx_data(void);
 void tx_chaine (void);
 void rx_chaine (void);
+void tx_int (unsigned char valeur_a_transmettre);
 
 # 7 "Interrupt.c"
 void high_priority interrupt clavier_appuyer (void){
@@ -11965,9 +11965,9 @@ INTCONbits.INT0IF = 0;
 }
 
 if(PIR3bits.RC2IF == 1){
-
 PIR3bits.RC2IF = 0;
 char_recu = 1;
+RCIF = 0;
 }
 
 if(PIR3bits.TX2IF == 1){

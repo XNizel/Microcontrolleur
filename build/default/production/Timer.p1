@@ -1,36 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[s S64 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S64 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
-[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S65 . TX9D2 TRMT2 BRGH2 SENDB2 SYNC2 TXEN2 TX92 CSRC2 ]
-[s S66 :6 `uc 1 :1 `uc 1 ]
-[n S66 . . TX8_92 ]
-[s S67 :1 `uc 1 ]
-[n S67 . TXD82 ]
-[u S63 `S64 1 `S65 1 `S66 1 `S67 1 ]
-[n S63 . . . . . ]
-"921 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _TXSTA2bits `VS63 ~T0 @X0 0 e@3873 ]
-"666
-[v _TXREG2 `Vuc ~T0 @X0 0 e@3868 ]
-"8 user.h
-[v _Tempo `(v ~T0 @X0 0 ef1`i ]
-[s S770 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S770 . RTCCIF CCP1IF CCP2IF CTMUIF TX2IF RC2IF . TMR5GIF ]
-[s S771 :1 `uc 1 :1 `uc 1 ]
-[n S771 . . RXBNIF ]
-[s S772 :4 `uc 1 :1 `uc 1 ]
-[n S772 . . TXBNIF ]
-[u S769 `S770 1 `S771 1 `S772 1 ]
-[n S769 . . . . ]
-"12393 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _PIR3bits `VS769 ~T0 @X0 0 e@4004 ]
-"685
-[v _RCREG2 `Vuc ~T0 @X0 0 e@3869 ]
-"18 LCD.h
-[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
-"26
-[v _shift_cursor_right `(v ~T0 @X0 0 ef ]
+"17619 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"17638
+[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9169,232 +9141,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-"3 EUSART.h
-[v _data1 `uc ~T0 @X0 1 e ]
-[; ;EUSART.h: 3: unsigned char data1;
-"4
-[v _TX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[i _TX_BUFFER
-:U ..
--> 97 `c
--> 98 `c
--> 99 `c
--> 100 `c
--> 101 `c
--> 0 `c
-..
-]
-[; ;EUSART.h: 4: unsigned char TX_BUFFER[20] = "abcde";
-"5
-[v _TX_INDEX `i ~T0 @X0 1 e ]
-[i _TX_INDEX
--> 0 `i
-]
-[; ;EUSART.h: 5: int TX_INDEX = 0;
-"6
-[v _RX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[; ;EUSART.h: 6: unsigned char RX_BUFFER[20];
-"7
-[v _RX_INDEX `i ~T0 @X0 1 e ]
-[i _RX_INDEX
--> 0 `i
-]
-[; ;EUSART.h: 7: int RX_INDEX = 0;
-[; ;EUSART.h: 9: void tx_data(unsigned char data);
-[; ;EUSART.h: 10: unsigned char rx_data(void);
-[; ;EUSART.h: 11: void tx_chaine (void);
-[; ;EUSART.h: 12: void rx_chaine (void);
-[; ;EUSART.h: 13: void tx_int (unsigned char valeur_a_transmettre);
-[; ;LCD.h: 18: extern far unsigned char LCD_DATA @ 0x1A0002;
-[; ;LCD.h: 19: extern far unsigned char LCD_FUNC @ 0x1A0000;
-"21 LCD.h
-[v _buffer_ASCII `i ~T0 @X0 -> 6 `i e ]
-[; ;LCD.h: 21: int buffer_ASCII[6];
-[; ;LCD.h: 23: void init_LCD(void);
-[; ;LCD.h: 24: void clear_LCD (void);
-[; ;LCD.h: 25: void home_LCD (void);
-[; ;LCD.h: 26: void shift_cursor_right (void);
-[; ;LCD.h: 27: void shift_cursor_left (void);
-[; ;LCD.h: 28: void set_cursor_pos (int position);
-[; ;LCD.h: 29: void set_cursor_line_2 (void);
-[; ;LCD.h: 30: void INT_to_ASCII (int valeur_a_conv, int lenght_value);
 "5 user.h
 [v _valeur_test `i ~T0 @X0 1 e ]
 [; ;user.h: 5: int valeur_test;
 [; ;user.h: 7: void Init(void);
 [; ;user.h: 8: void Tempo(int val);
 [; ;user.h: 9: long map(long x, long in_min, long in_max, long out_min, long out_max);
-"6 EUSART.c
-[v _tx_data `(v ~T0 @X0 1 ef1`uc ]
+[; ;Timer.h: 5: int get_Timer_Value(void);
+"5 Timer.c
+[v _get_Timer_Value `(i ~T0 @X0 1 ef ]
 {
-[; ;EUSART.c: 6: void tx_data(unsigned char data){
-[e :U _tx_data ]
-[v _data `uc ~T0 @X0 1 r1 ]
+[; ;Timer.c: 5: int get_Timer_Value(void){
+[e :U _get_Timer_Value ]
 [f ]
-[; ;EUSART.c: 8: while (!TXSTA2bits.TRMT2);
+"6
+[v _timer_valueL `i ~T0 @X0 1 a ]
+[; ;Timer.c: 6: int timer_valueL = 0;
+[e = _timer_valueL -> 0 `i ]
+"7
+[v _timer_value `i ~T0 @X0 1 a ]
+[; ;Timer.c: 7: int timer_value = 0;
+[e = _timer_value -> 0 `i ]
+[; ;Timer.c: 8: timer_valueL = TMR0L;
 "8
-[e $U 1239  ]
-[e :U 1240 ]
-[e :U 1239 ]
-[e $ ! != -> . . _TXSTA2bits 1 1 `i -> -> -> 0 `i `Vuc `i 1240  ]
-[e :U 1241 ]
-[; ;EUSART.c: 9: TXREG2 = data;
-"9
-[e = _TXREG2 _data ]
-[; ;EUSART.c: 10: Tempo(5);
+[e = _timer_valueL -> _TMR0L `i ]
+[; ;Timer.c: 10: timer_value = TMR0H;
 "10
-[e ( _Tempo (1 -> 5 `i ]
-[; ;EUSART.c: 11: }
+[e = _timer_value -> _TMR0H `i ]
+[; ;Timer.c: 11: timer_value = timer_value << 8;
 "11
-[e :UE 1238 ]
-}
+[e = _timer_value << _timer_value -> 8 `i ]
+[; ;Timer.c: 12: timer_value = timer_value + timer_valueL;
+"12
+[e = _timer_value + _timer_value _timer_valueL ]
+[; ;Timer.c: 13: return timer_value;
 "13
-[v _rx_data `(uc ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 13: unsigned char rx_data(void){
-[e :U _rx_data ]
-[f ]
-[; ;EUSART.c: 14: while(PIR3bits.TX2IF==0);
+[e ) _timer_value ]
+[e $UE 1238  ]
+[; ;Timer.c: 14: }
 "14
-[e $U 1243  ]
-[e :U 1244 ]
-[e :U 1243 ]
-[e $ == -> . . _PIR3bits 0 4 `i -> 0 `i 1244  ]
-[e :U 1245 ]
-[; ;EUSART.c: 15: return RCREG2;
-"15
-[e ) _RCREG2 ]
-[e $UE 1242  ]
-[; ;EUSART.c: 16: Tempo(5);
-"16
-[e ( _Tempo (1 -> 5 `i ]
-[; ;EUSART.c: 17: }
-"17
-[e :UE 1242 ]
-}
-"19
-[v _rx_chaine `(v ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 19: void rx_chaine (void){
-[e :U _rx_chaine ]
-[f ]
-[; ;EUSART.c: 20: do{
-"20
-[e :U 1249 ]
-{
-[; ;EUSART.c: 21: RX_BUFFER[RX_INDEX] = rx_data;
-"21
-[e = *U + &U _RX_BUFFER * -> -> _RX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux -> &U _rx_data `uc ]
-[; ;EUSART.c: 22: RX_INDEX += 1;
-"22
-[e =+ _RX_INDEX -> 1 `i ]
-"23
-}
-[; ;EUSART.c: 23: }while(RX_BUFFER[RX_INDEX - 1] != 'e');
-[e $ != -> *U + &U _RX_BUFFER * -> -> - _RX_INDEX -> 1 `i `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux `ui -> 101 `ui 1249  ]
-[e :U 1248 ]
-[; ;EUSART.c: 24: }
-"24
-[e :UE 1246 ]
-}
-"26
-[v _tx_chaine `(v ~T0 @X0 1 ef ]
-{
-[; ;EUSART.c: 26: void tx_chaine (void){
-[e :U _tx_chaine ]
-[f ]
-[; ;EUSART.c: 27: for(TX_INDEX = 0; TX_INDEX < 9; TX_INDEX++){
-"27
-{
-[e = _TX_INDEX -> 0 `i ]
-[e $ < _TX_INDEX -> 9 `i 1251  ]
-[e $U 1252  ]
-[e :U 1251 ]
-{
-[; ;EUSART.c: 28: tx_data(RX_BUFFER[TX_INDEX]);
-"28
-[e ( _tx_data (1 *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
-[; ;EUSART.c: 29: LCD_DATA = RX_BUFFER[TX_INDEX];
-"29
-[e = _LCD_DATA *U + &U _RX_BUFFER * -> -> _TX_INDEX `ui `ux -> -> # *U &U _RX_BUFFER `ui `ux ]
-[; ;EUSART.c: 30: shift_cursor_right();
-"30
-[e ( _shift_cursor_right ..  ]
-"31
-}
-"27
-[e ++ _TX_INDEX -> 1 `i ]
-[e $ < _TX_INDEX -> 9 `i 1251  ]
-[e :U 1252 ]
-"31
-}
-[; ;EUSART.c: 31: }
-[; ;EUSART.c: 32: }
-"32
-[e :UE 1250 ]
-}
-"33
-[v _tx_int `(v ~T0 @X0 1 ef1`uc ]
-{
-[; ;EUSART.c: 33: void tx_int (unsigned char valeur_a_transmettre) {
-[e :U _tx_int ]
-[v _valeur_a_transmettre `uc ~T0 @X0 1 r1 ]
-[f ]
-"34
-[v _buffer `uc ~T0 @X0 -> 5 `i a ]
-[; ;EUSART.c: 34: unsigned char buffer[5];
-[; ;EUSART.c: 36: for (int i=0; i<5; i++) {
-"36
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 1255  ]
-[e $U 1256  ]
-[e :U 1255 ]
-{
-[; ;EUSART.c: 37: buffer[i] = valeur_a_transmettre % 10;
-"37
-[e = *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux -> % -> _valeur_a_transmettre `i -> 10 `i `uc ]
-[; ;EUSART.c: 38: valeur_a_transmettre = valeur_a_transmettre / 10;
-"38
-[e = _valeur_a_transmettre -> / -> _valeur_a_transmettre `i -> 10 `i `uc ]
-"39
-}
-"36
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 1255  ]
-[e :U 1256 ]
-"39
-}
-[; ;EUSART.c: 39: }
-[; ;EUSART.c: 41: for (int i=5; i>0; i++) {
-"41
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 5 `i ]
-[e $ > _i -> 0 `i 1258  ]
-[e $U 1259  ]
-[e :U 1258 ]
-{
-[; ;EUSART.c: 42: tx_data(buffer[i] + 0x30);
-"42
-[e ( _tx_data (1 -> + -> *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 48 `i `uc ]
-"43
-}
-"41
-[e ++ _i -> 1 `i ]
-[e $ > _i -> 0 `i 1258  ]
-[e :U 1259 ]
-"43
-}
-[; ;EUSART.c: 43: }
-[; ;EUSART.c: 45: tx_data(0x0D);
-"45
-[e ( _tx_data (1 -> -> 13 `i `uc ]
-[; ;EUSART.c: 46: tx_data(0x0A);
-"46
-[e ( _tx_data (1 -> -> 10 `i `uc ]
-[; ;EUSART.c: 47: }
-"47
-[e :UE 1254 ]
+[e :UE 1238 ]
 }

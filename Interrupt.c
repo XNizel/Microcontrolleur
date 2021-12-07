@@ -10,10 +10,10 @@ void high_priority interrupt clavier_appuyer (void){
         INTCONbits.INT0IF = 0;
     }
     
-     if(PIR3bits.RC2IF == 1){
-        //data_test = rx_data();
+    if(PIR3bits.RC2IF == 1){
         PIR3bits.RC2IF = 0;
         char_recu = 1;
+        RCIF = 0; // Clear The Flag
     }
     
     if(PIR3bits.TX2IF == 1){

@@ -9161,51 +9161,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-"3 CAN.h
-[v _resultat_CAN `i ~T0 @X0 1 e ]
-[i _resultat_CAN
--> 0 `i
-]
-[; ;CAN.h: 3: int resultat_CAN = 0;
-[; ;CAN.h: 5: void get_CAN(void);
+[; ;CAN.h: 5: int get_CAN(void);
 "4 CAN.c
-[v _get_CAN `(v ~T0 @X0 1 ef ]
+[v _get_CAN `(i ~T0 @X0 1 ef ]
 {
-[; ;CAN.c: 4: void get_CAN(void){
+[; ;CAN.c: 4: int get_CAN(void){
 [e :U _get_CAN ]
 [f ]
-[; ;CAN.c: 5: if(ADCON0bits.GODONE == 0){
 "5
+[v _resultat_CAN `i ~T0 @X0 1 a ]
+[; ;CAN.c: 5: int resultat_CAN;
+[; ;CAN.c: 6: if(ADCON0bits.GODONE == 0){
+"6
 [e $ ! == -> . . _ADCON0bits 6 1 `i -> 0 `i 1239  ]
 {
-[; ;CAN.c: 6: resultat_CAN = ADRESH;
-"6
-[e = _resultat_CAN -> _ADRESH `i ]
-[; ;CAN.c: 7: resultat_CAN = resultat_CAN << 8;
+[; ;CAN.c: 7: resultat_CAN = ADRESH;
 "7
-[e = _resultat_CAN << _resultat_CAN -> 8 `i ]
-[; ;CAN.c: 8: resultat_CAN = resultat_CAN + ADRESL;
+[e = _resultat_CAN -> _ADRESH `i ]
+[; ;CAN.c: 8: resultat_CAN = resultat_CAN << 8;
 "8
-[e = _resultat_CAN + _resultat_CAN -> _ADRESL `i ]
-[; ;CAN.c: 9: ADCON0bits.GODONE = 1;
+[e = _resultat_CAN << _resultat_CAN -> 8 `i ]
+[; ;CAN.c: 9: resultat_CAN = resultat_CAN + ADRESL;
 "9
-[e = . . _ADCON0bits 6 1 -> -> 1 `i `uc ]
+[e = _resultat_CAN + _resultat_CAN -> _ADRESL `i ]
+[; ;CAN.c: 10: ADCON0bits.GODONE = 1;
 "10
-}
-[; ;CAN.c: 10: }
-[e $U 1240  ]
-"11
-[e :U 1239 ]
-[; ;CAN.c: 11: else{
-{
-[; ;CAN.c: 12: ADCON0bits.GODONE = 1;
-"12
 [e = . . _ADCON0bits 6 1 -> -> 1 `i `uc ]
+"11
+}
+[; ;CAN.c: 11: }
+[e $U 1240  ]
+"12
+[e :U 1239 ]
+[; ;CAN.c: 12: else{
+{
+[; ;CAN.c: 13: ADCON0bits.GODONE = 1;
 "13
+[e = . . _ADCON0bits 6 1 -> -> 1 `i `uc ]
+"14
 }
 [e :U 1240 ]
-[; ;CAN.c: 13: }
 [; ;CAN.c: 14: }
-"14
+[; ;CAN.c: 15: return resultat_CAN;
+"15
+[e ) _resultat_CAN ]
+[e $UE 1238  ]
+[; ;CAN.c: 16: }
+"16
 [e :UE 1238 ]
 }

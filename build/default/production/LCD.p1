@@ -1,9 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"7 user.h
+"8 user.h
 [v _Tempo `(v ~T0 @X0 0 ef1`i ]
-"18 LCD.h
+"19 LCD.h
 [v _LCD_FUNC `Fuc ~T0 @X0 0 e@1703936 ]
-"17
+"18
 [v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
@@ -9143,21 +9143,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;user.h: 6: void Init(void);
-[; ;user.h: 7: void Tempo(int val);
-[; ;user.h: 8: long map(long x, long in_min, long in_max, long out_min, long out_max);
-[; ;LCD.h: 17: extern far unsigned char LCD_DATA @ 0x1A0002;
-[; ;LCD.h: 18: extern far unsigned char LCD_FUNC @ 0x1A0000;
-"20 LCD.h
-[v _buffer_ASCII `i ~T0 @X0 -> 5 `i e ]
-[; ;LCD.h: 20: int buffer_ASCII[5];
-[; ;LCD.h: 22: void init_LCD(void);
-[; ;LCD.h: 23: void clear_LCD (void);
-[; ;LCD.h: 24: void home_LCD (void);
-[; ;LCD.h: 25: void shift_cursor_right (void);
-[; ;LCD.h: 26: void shift_cursor_left (void);
-[; ;LCD.h: 27: void set_cursor_pos (int position);
-[; ;LCD.h: 28: void INT_to_ASCII (int valeur_a_conv);
+"5 user.h
+[v _valeur_test `i ~T0 @X0 1 e ]
+[; ;user.h: 5: int valeur_test;
+[; ;user.h: 7: void Init(void);
+[; ;user.h: 8: void Tempo(int val);
+[; ;user.h: 9: long map(long x, long in_min, long in_max, long out_min, long out_max);
+[; ;LCD.h: 18: extern far unsigned char LCD_DATA @ 0x1A0002;
+[; ;LCD.h: 19: extern far unsigned char LCD_FUNC @ 0x1A0000;
+"21 LCD.h
+[v _buffer_ASCII `i ~T0 @X0 -> 6 `i e ]
+[; ;LCD.h: 21: int buffer_ASCII[6];
+[; ;LCD.h: 23: void init_LCD(void);
+[; ;LCD.h: 24: void clear_LCD (void);
+[; ;LCD.h: 25: void home_LCD (void);
+[; ;LCD.h: 26: void shift_cursor_right (void);
+[; ;LCD.h: 27: void shift_cursor_left (void);
+[; ;LCD.h: 28: void set_cursor_pos (int position);
+[; ;LCD.h: 29: void set_cursor_line_2 (void);
+[; ;LCD.h: 30: void INT_to_ASCII (int valeur_a_conv, int lenght_value);
 "6 LCD.c
 [v _init_LCD `(v ~T0 @X0 1 ef ]
 {
@@ -9287,15 +9291,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1242 ]
 }
 "47
-[v _set_cursor_pos `(v ~T0 @X0 1 ef1`i ]
+[v _set_cursor_line_2 `(v ~T0 @X0 1 ef ]
 {
-[; ;LCD.c: 47: void set_cursor_pos (int position) {
-[e :U _set_cursor_pos ]
-[v _position `i ~T0 @X0 1 r1 ]
+[; ;LCD.c: 47: void set_cursor_line_2 (void) {
+[e :U _set_cursor_line_2 ]
 [f ]
-[; ;LCD.c: 48: LCD_FUNC = 0x02;
+[; ;LCD.c: 48: LCD_FUNC = 0xC0;
 "48
-[e = _LCD_FUNC -> -> 2 `i `uc ]
+[e = _LCD_FUNC -> -> 192 `i `uc ]
 [; ;LCD.c: 49: Tempo(2);
 "49
 [e ( _Tempo (1 -> 2 `i ]
@@ -9304,77 +9307,101 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1243 ]
 }
 "52
-[v _INT_to_ASCII `(v ~T0 @X0 1 ef1`i ]
+[v _set_cursor_pos `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;LCD.c: 52: void INT_to_ASCII (int valeur_a_conv){
+[; ;LCD.c: 52: void set_cursor_pos (int position) {
+[e :U _set_cursor_pos ]
+[v _position `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;LCD.c: 53: for (int i=0; i<=position; i++) {
+"53
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 1248  ]
+[e :U 1245 ]
+{
+[; ;LCD.c: 54: shift_cursor_right();
+"54
+[e ( _shift_cursor_right ..  ]
+"55
+}
+"53
+[e ++ _i -> 1 `i ]
+[e :U 1248 ]
+[e $ <= _i _position 1245  ]
+[e :U 1246 ]
+"55
+}
+[; ;LCD.c: 55: }
+[; ;LCD.c: 56: Tempo(2);
+"56
+[e ( _Tempo (1 -> 2 `i ]
+[; ;LCD.c: 57: }
+"57
+[e :UE 1244 ]
+}
+"59
+[v _INT_to_ASCII `(v ~T0 @X0 1 ef2`i`i ]
+{
+[; ;LCD.c: 59: void INT_to_ASCII (int valeur_a_conv, int lenght_value){
 [e :U _INT_to_ASCII ]
 [v _valeur_a_conv `i ~T0 @X0 1 r1 ]
+[v _lenght_value `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;LCD.c: 53: buffer_ASCII[0] = valeur_a_conv % 10;
-"53
-[e = *U + &U _buffer_ASCII * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 54: valeur_a_conv = valeur_a_conv / 10;
-"54
-[e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 55: buffer_ASCII[1] = valeur_a_conv % 10;
-"55
-[e = *U + &U _buffer_ASCII * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 56: valeur_a_conv = valeur_a_conv / 10;
-"56
-[e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 57: buffer_ASCII[2] = valeur_a_conv % 10;
-"57
-[e = *U + &U _buffer_ASCII * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 58: valeur_a_conv = valeur_a_conv / 10;
-"58
-[e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 59: buffer_ASCII[3] = valeur_a_conv % 10;
-"59
-[e = *U + &U _buffer_ASCII * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 60: valeur_a_conv = valeur_a_conv / 10;
-"60
-[e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 61: buffer_ASCII[4] = valeur_a_conv % 10;
+[; ;LCD.c: 61: for (int i=0; i<=lenght_value; i++) {
 "61
-[e = *U + &U _buffer_ASCII * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 62: valeur_a_conv = valeur_a_conv / 10;
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 1253  ]
+[e :U 1250 ]
+{
+[; ;LCD.c: 62: buffer_ASCII[i] = valeur_a_conv % 10;
 "62
-[e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 63: buffer_ASCII[5] = valeur_a_conv % 10;
+[e = *U + &U _buffer_ASCII * -> -> _i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
+[; ;LCD.c: 63: valeur_a_conv = valeur_a_conv / 10;
 "63
-[e = *U + &U _buffer_ASCII * -> -> -> 5 `i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux % _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 64: valeur_a_conv = valeur_a_conv / 10;
-"64
 [e = _valeur_a_conv / _valeur_a_conv -> 10 `i ]
-[; ;LCD.c: 66: for (int i = 5; i >= 0; i--){
+"64
+}
+"61
+[e ++ _i -> 1 `i ]
+[e :U 1253 ]
+[e $ <= _i _lenght_value 1250  ]
+[e :U 1251 ]
+"64
+}
+[; ;LCD.c: 64: }
+[; ;LCD.c: 66: for (int i = lenght_value; i >= 0; i--){
 "66
 {
 [v _i `i ~T0 @X0 1 a ]
-[e = _i -> 5 `i ]
-[e $ >= _i -> 0 `i 1245  ]
-[e $U 1246  ]
-[e :U 1245 ]
+[e = _i _lenght_value ]
+[e $ >= _i -> 0 `i 1254  ]
+[e $U 1255  ]
+[e :U 1254 ]
 {
 [; ;LCD.c: 67: LCD_DATA = (buffer_ASCII[i]) + 0x30;
 "67
 [e = _LCD_DATA -> + *U + &U _buffer_ASCII * -> -> _i `ui `ux -> -> # *U &U _buffer_ASCII `ui `ux -> 48 `i `uc ]
 [; ;LCD.c: 68: while((LCD_FUNC & 0x80) == 0x80);
 "68
-[e $U 1248  ]
-[e :U 1249 ]
-[e :U 1248 ]
-[e $ == & -> _LCD_FUNC `i -> 128 `i -> 128 `i 1249  ]
-[e :U 1250 ]
+[e $U 1257  ]
+[e :U 1258 ]
+[e :U 1257 ]
+[e $ == & -> _LCD_FUNC `i -> 128 `i -> 128 `i 1258  ]
+[e :U 1259 ]
 "69
 }
 "66
 [e -- _i -> 1 `i ]
-[e $ >= _i -> 0 `i 1245  ]
-[e :U 1246 ]
+[e $ >= _i -> 0 `i 1254  ]
+[e :U 1255 ]
 "69
 }
 [; ;LCD.c: 69: }
 [; ;LCD.c: 70: }
 "70
-[e :UE 1244 ]
+[e :UE 1249 ]
 }

@@ -11923,13 +11923,12 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 3 "CAN.h"
-int resultat_CAN = 0;
-
-void get_CAN(void);
+# 5 "CAN.h"
+int get_CAN(void);
 
 # 4 "CAN.c"
-void get_CAN(void){
+int get_CAN(void){
+int resultat_CAN;
 if(ADCON0bits.GODONE == 0){
 resultat_CAN = ADRESH;
 resultat_CAN = resultat_CAN << 8;
@@ -11939,4 +11938,5 @@ ADCON0bits.GODONE = 1;
 else{
 ADCON0bits.GODONE = 1;
 }
+return resultat_CAN;
 }

@@ -23,6 +23,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S769 . . . . ]
 "12393
 [v _PIR3bits `VS769 ~T0 @X0 0 e@4004 ]
+"20729
+[v _RCIF `Vb ~T0 @X0 0 e@31989 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9179,8 +9181,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;Interrupt.h: 5: int char_transmis = 0;
-[; ;Interrupt.h: 9: void high_priority interrupt clavier_appuyer (void);
-[; ;Interrupt.h: 11: void low_priority interrupt UART (void);
+[; ;Interrupt.h: 11: void high_priority interrupt clavier_appuyer (void);
+[; ;Interrupt.h: 13: void low_priority interrupt UART (void);
 "1 system.h
 [v _clavier_a_traiter `ui ~T0 @X0 1 e ]
 [; ;system.h: 1: unsigned int clavier_a_traiter;
@@ -9230,7 +9232,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EUSART.h: 10: unsigned char rx_data(void);
 [; ;EUSART.h: 11: void tx_chaine (void);
 [; ;EUSART.h: 12: void rx_chaine (void);
-"9 Interrupt.h
+[; ;EUSART.h: 13: void tx_int (unsigned char valeur_a_transmettre);
+"11 Interrupt.h
 [v F10185 `(v ~T0 @X0 1 tf ]
 "7 Interrupt.c
 [v _clavier_appuyer `IHF10185 ~T0 @X0 1 e ]
@@ -9256,12 +9259,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "13
 [e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 1240  ]
 {
-[; ;Interrupt.c: 15: PIR3bits.RC2IF = 0;
-"15
+[; ;Interrupt.c: 14: PIR3bits.RC2IF = 0;
+"14
 [e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-[; ;Interrupt.c: 16: char_recu = 1;
-"16
+[; ;Interrupt.c: 15: char_recu = 1;
+"15
 [e = _char_recu -> 1 `i ]
+[; ;Interrupt.c: 16: RCIF = 0;
+"16
+[e = _RCIF -> -> 0 `i `b ]
 "17
 }
 [e :U 1240 ]
@@ -9284,7 +9290,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [e :UE 1238 ]
 }
-"11 Interrupt.h
+"13 Interrupt.h
 [v F10188 `(v ~T0 @X0 1 tf ]
 "25 Interrupt.c
 [v _UART `ILF10188 ~T0 @X0 1 e ]

@@ -11923,7 +11923,9 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 6 "user.h"
+# 5 "user.h"
+int valeur_test;
+
 void Init(void);
 void Tempo(int val);
 long map(long x, long in_min, long in_max, long out_min, long out_max);
@@ -11956,15 +11958,24 @@ RCSTA2bits.CREN = 1;
 
 
 
-TRISA = 0x01;
-TRISB = 0x01;
+
+TRISA = 0xFF;
+TRISB = 0xFF;
+TRISBbits.TRISB1 = 1;
+
+
+TRISCbits.TRISC7 = 1;
+TRISCbits.TRISC6 = 0;
+
+TRISCbits.TRISC2 = 0;
+
 TRISG = 0x00;
+TRISGbits.TRISG1 = 1;
+TRISAbits.TRISA4 = 1;
 
-PORTD = 0;
-PORTE = 0;
-PORTH = 0;
+TRISJ = 0x00;
 
-
+# 55
 RCONbits.IPEN = 1;
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
@@ -11972,7 +11983,13 @@ INTCONbits.INT0IE = 1;
 INTCON2bits.INTEDG0 = 0;
 INTCONbits.INT0F = 0;
 
-# 52
+# 69
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+T0CONbits.T0SE = 0;
+T0CONbits.PSA = 0;
+T0CONbits.T0PS = 0x6;
+
 }
 
 
@@ -11983,7 +12000,7 @@ _delay((unsigned long)((1)*(11059200/4000.0)));
 }
 }
 
-# 71
+# 94
 long map(long x, long in_min, long in_max, long out_min, long out_max) {
 return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

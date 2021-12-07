@@ -10,3 +10,4 @@ void tx_data(unsigned char data);
 unsigned char rx_data(void);
 void tx_chaine (void);
 void rx_chaine (void);
+void tx_int (unsigned char valeur_a_transmettre);
