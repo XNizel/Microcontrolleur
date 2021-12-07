@@ -1,5 +1,5 @@
 
-# 1 "Timer.c"
+# 1 "CAN.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,27 +11923,20 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 5 "user.h"
-int valeur_test;
-unsigned int periode = 100;
-unsigned int duty_cycle = 10;
+# 5 "CAN.h"
+int get_CAN(void);
 
-void Init(void);
-void Tempo(int val);
-long map(long x, long in_min, long in_max, long out_min, long out_max);
-
-# 5 "Timer.h"
-int get_Timer_Value(void);
-
-# 5 "Timer.c"
-int get_Timer_Value(void){
-int timer_valueL = 0;
-int timer_value = 0;
-timer_valueL = TMR0L;
-
-timer_value = TMR0H;
-timer_value = timer_value << 8;
-timer_value = timer_value + timer_valueL;
-return timer_value;
+# 4 "CAN.c"
+int get_CAN(void){
+int resultat_CAN;
+if(ADCON0bits.GODONE == 0){
+resultat_CAN = ADRESH;
+resultat_CAN = resultat_CAN << 8;
+resultat_CAN = resultat_CAN + ADRESL;
+ADCON0bits.GODONE = 1;
 }
-
+else{
+ADCON0bits.GODONE = 1;
+}
+return resultat_CAN;
+}

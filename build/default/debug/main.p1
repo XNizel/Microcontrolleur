@@ -9224,9 +9224,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6
 [v _periode `ui ~T0 @X0 1 e ]
 [i _periode
--> -> 100 `i `ui
+-> -> 300 `i `ui
 ]
-[; ;user.h: 6: unsigned int periode = 100;
+[; ;user.h: 6: unsigned int periode = 300;
 "7
 [v _duty_cycle `ui ~T0 @X0 1 e ]
 [i _duty_cycle
@@ -9465,62 +9465,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 "162
 [e $ ! == -> . . _PORTGbits 0 4 `i -> 1 `i 1243  ]
 {
-[; ;main.c: 163: if (duty_cycle > 100) {duty_cycle = 100;}
+[; ;main.c: 163: duty_cycle += 5;
 "163
-[e $ ! > _duty_cycle -> -> 100 `i `ui 1244  ]
+[e =+ _duty_cycle -> -> 5 `i `ui ]
+[; ;main.c: 164: Tempo(15);
+"164
+[e ( _Tempo (1 -> 15 `i ]
+"165
+}
+[e :U 1243 ]
+[; ;main.c: 165: }
+[; ;main.c: 166: if (PORTGbits.RG3 == 1) {
+"166
+[e $ ! == -> . . _PORTGbits 0 3 `i -> 1 `i 1244  ]
+{
+[; ;main.c: 167: duty_cycle -= 5;
+"167
+[e =- _duty_cycle -> -> 5 `i `ui ]
+[; ;main.c: 168: Tempo(15);
+"168
+[e ( _Tempo (1 -> 15 `i ]
+"169
+}
+[e :U 1244 ]
+[; ;main.c: 169: }
+[; ;main.c: 170: if (duty_cycle > 100) {duty_cycle = 100;}
+"170
+[e $ ! > _duty_cycle -> -> 100 `i `ui 1245  ]
 {
 [e = _duty_cycle -> -> 100 `i `ui ]
 }
-[e $U 1245  ]
-"164
-[e :U 1244 ]
-[; ;main.c: 164: else {duty_cycle += 5;}
-{
-[e =+ _duty_cycle -> -> 5 `i `ui ]
-}
 [e :U 1245 ]
-[; ;main.c: 165: Tempo(15);
-"165
-[e ( _Tempo (1 -> 15 `i ]
-"166
-}
-[e :U 1243 ]
-[; ;main.c: 166: }
-[; ;main.c: 167: if (PORTGbits.RG3 == 1) {
-"167
-[e $ ! == -> . . _PORTGbits 0 3 `i -> 1 `i 1246  ]
-{
-[; ;main.c: 168: if (duty_cycle < 5) {duty_cycle = 0;}
-"168
-[e $ ! < _duty_cycle -> -> 5 `i `ui 1247  ]
+[; ;main.c: 171: if (duty_cycle < 0) {duty_cycle = 0;}
+"171
+[e $ ! < _duty_cycle -> -> 0 `i `ui 1246  ]
 {
 [e = _duty_cycle -> -> 0 `i `ui ]
 }
-[e $U 1248  ]
-"169
-[e :U 1247 ]
-[; ;main.c: 169: else {duty_cycle -= 5;}
-{
-[e =- _duty_cycle -> -> 5 `i `ui ]
-}
-[e :U 1248 ]
-[; ;main.c: 170: Tempo(15);
-"170
-[e ( _Tempo (1 -> 15 `i ]
-"171
-}
 [e :U 1246 ]
-[; ;main.c: 171: }
-[; ;main.c: 172: if (duty_cycle > 100) {duty_cycle = 100;}
 "172
-[e $ ! > _duty_cycle -> -> 100 `i `ui 1249  ]
-{
-[e = _duty_cycle -> -> 100 `i `ui ]
-}
-[e :U 1249 ]
-[; ;main.c: 173: CCPR1L = duty_cycle;
+[v _duty `i ~T0 @X0 1 a ]
+[; ;main.c: 172: int duty = (periode / 10) * (duty_cycle / 10);
+[e = _duty -> * / _periode -> -> 10 `i `ui / _duty_cycle -> -> 10 `i `ui `i ]
+[; ;main.c: 173: CCPR1L = duty;
 "173
-[e = _CCPR1L -> _duty_cycle `uc ]
+[e = _CCPR1L -> _duty `uc ]
 [; ;main.c: 176: INT_to_ASCII(duty_cycle, 4);
 "176
 [e ( _INT_to_ASCII (2 , -> _duty_cycle `i -> 4 `i ]

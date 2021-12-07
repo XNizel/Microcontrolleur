@@ -9144,9 +9144,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5 user.h
 [v _valeur_test `i ~T0 @X0 1 e ]
 [; ;user.h: 5: int valeur_test;
-[; ;user.h: 7: void Init(void);
-[; ;user.h: 8: void Tempo(int val);
-[; ;user.h: 9: long map(long x, long in_min, long in_max, long out_min, long out_max);
+"6
+[v _periode `ui ~T0 @X0 1 e ]
+[i _periode
+-> -> 100 `i `ui
+]
+[; ;user.h: 6: unsigned int periode = 100;
+"7
+[v _duty_cycle `ui ~T0 @X0 1 e ]
+[i _duty_cycle
+-> -> 10 `i `ui
+]
+[; ;user.h: 7: unsigned int duty_cycle = 10;
+[; ;user.h: 9: void Init(void);
+[; ;user.h: 10: void Tempo(int val);
+[; ;user.h: 11: long map(long x, long in_min, long in_max, long out_min, long out_max);
 [; ;Timer.h: 5: int get_Timer_Value(void);
 "5 Timer.c
 [v _get_Timer_Value `(i ~T0 @X0 1 ef ]

@@ -1,19 +1,19 @@
-___awdiv: CODE, 1404 0 238
+___awdiv: CODE, 1692 0 310
 _UART: CODE, 24 0 138
-___awmod: CODE, 1642 0 192
-_main: CODE, 166 0 660
-_shift_cursor_right: CODE, 2556 0 32
-__initialization: CODE, 2340 0 56
-_home_LCD: CODE, 2524 0 32
-_Tempo: CODE, 2402 0 58
-_clavier_appuyer: CODE, 8 0 1990
-_I2C_Init: CODE, 2620 0 28
-_get_Timer_Value: CODE, 2136 0 114
-_init_LCD: CODE, 1132 0 272
-_set_cursor_pos: CODE, 2250 0 90
-_Init: CODE, 1998 0 138
-_clear_LCD: CODE, 2492 0 32
-_INT_to_ASCII: CODE, 826 0 306
-_tx_data: CODE, 2588 0 32
-_set_cursor_line_2: CODE, 2460 0 32
-Total: 4440
+___awmod: CODE, 2002 0 270
+_main: CODE, 166 0 852
+_shift_cursor_right: CODE, 3068 0 40
+__initialization: CODE, 2812 0 88
+_home_LCD: CODE, 3028 0 40
+_Tempo: CODE, 2906 0 82
+_clavier_appuyer: CODE, 8 0 2592
+_I2C_Init: CODE, 3188 0 28
+_get_Timer_Value: CODE, 2600 0 114
+_init_LCD: CODE, 1018 0 344
+_set_cursor_pos: CODE, 2714 0 98
+_Init: CODE, 2272 0 164
+_clear_LCD: CODE, 3108 0 40
+_INT_to_ASCII: CODE, 1362 0 330
+_tx_data: CODE, 3148 0 40
+_set_cursor_line_2: CODE, 2988 0 40
+Total: 5610

@@ -1,5 +1,5 @@
 
-# 1 "Timer.c"
+# 1 "user.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11925,25 +11925,96 @@ extern void _delay3(unsigned char);
 
 # 5 "user.h"
 int valeur_test;
-unsigned int periode = 100;
+unsigned int periode = 300;
 unsigned int duty_cycle = 10;
 
 void Init(void);
 void Tempo(int val);
 long map(long x, long in_min, long in_max, long out_min, long out_max);
 
-# 5 "Timer.h"
-int get_Timer_Value(void);
+# 5 "user.c"
+void Init() {
 
-# 5 "Timer.c"
-int get_Timer_Value(void){
-int timer_valueL = 0;
-int timer_value = 0;
-timer_valueL = TMR0L;
+MEMCON=0xA0;
 
-timer_value = TMR0H;
-timer_value = timer_value << 8;
-timer_value = timer_value + timer_valueL;
-return timer_value;
+
+
+ANCON0=0x00;
+ANCON0bits.ANSEL0 = 1;
+ADCON0bits.ADON = 1;
+ADCON1bits.VNCFG = 0;
+ADCON1bits.VCFG = 0;
+ADCON2bits.ADFM = 1;
+ANCON1=0x00;
+ANCON2=0x00;
+
+
+
+RCSTA2bits.SPEN = 1;
+TRISGbits.TRISG2 = 1;
+TRISGbits.TRISG1 = 0;
+TXSTA2bits.SYNC = 0;
+SPBRG2 = 17;
+TXSTA2bits.TXEN = 1;
+RCSTA2bits.CREN = 1;
+
+
+
+
+TRISA = 0xFF;
+TRISB = 0xFF;
+TRISBbits.TRISB1 = 1;
+
+
+TRISCbits.TRISC7 = 1;
+TRISCbits.TRISC6 = 0;
+
+
+TRISG = 0x00;
+TRISGbits.TRISG1 = 1;
+TRISAbits.TRISA4 = 1;
+
+TRISGbits.TRISG3 = 1;
+TRISGbits.TRISG4 = 1;
+
+
+
+TRISJ = 0x00;
+
+# 59
+RCONbits.IPEN = 1;
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+INTCONbits.INT0IE = 1;
+INTCON2bits.INTEDG0 = 0;
+INTCONbits.INT0F = 0;
+
+# 73
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 1;
+T0CONbits.T0SE = 0;
+T0CONbits.PSA = 1;
+T0CONbits.T0PS = 0x6;
+
+
+TRISCbits.TRISC2 = 0;
+PR2 = periode;
+CCPR1L = duty_cycle;
+T2CON = 0;
+CCP1CON = 0x0C;
+TMR2 = 0;
+TMR2ON = 1;
 }
 
+
+void Tempo (int val) {
+int i;
+for(i=0; i<val; i++){
+_delay((unsigned long)((1)*(11059200/4000.0)));
+}
+}
+
+# 106
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}

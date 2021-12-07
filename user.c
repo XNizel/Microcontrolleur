@@ -38,11 +38,15 @@ void Init() {
     TRISCbits.TRISC7 = 1; // RX1 en entrée 
     TRISCbits.TRISC6 = 0; // TX1 en sortie
     
-    TRISCbits.TRISC2 = 0; // configuration du port RC2 en sortie
     
     TRISG = 0x00;       //  0G en sortie pour la LED du VUMETER
     TRISGbits.TRISG1 = 1;
     TRISAbits.TRISA4 = 1;
+    
+    TRISGbits.TRISG3 = 1;
+    TRISGbits.TRISG4 = 1;
+    
+    
     
     TRISJ = 0x00;
     
@@ -64,7 +68,7 @@ void Init() {
     IPR3bits.RC2IP = 1;     //Basse prioritée
     IPR3bits.TX2IP = 1;     //Basse prioritée*/
     
-    //  Configuration du timer
+    //  Configuration du timer 0
     
     T0CONbits.T08BIT = 0;     //   Timer en 16bits
     T0CONbits.T0CS = 1;       //  Clk interne FOSC/4
@@ -72,6 +76,14 @@ void Init() {
     T0CONbits.PSA = 1;
     T0CONbits.T0PS = 0x6;     //  Div par 128  1 tick toutes les 46,3us  //2,89us
     
+    //  Configuration du timer 0
+    TRISCbits.TRISC2 = 0; // configuration du port RC2 en sortie
+    PR2 = periode;
+    CCPR1L = duty_cycle;
+    T2CON = 0;
+    CCP1CON = 0x0C;     //  PWM mode
+    TMR2 = 0;
+    TMR2ON = 1;    
 }
 
 

@@ -145,28 +145,43 @@ void main(void) {
             
         }
         T0CONbits.TMR0ON = 0;*/
-        
+        /*
         TMR0H = 0;
         TMR0L = 0;
         
         T0CONbits.TMR0ON = 1;
         Tempo(1000);
-        T0CONbits.TMR0ON = 0;
+        T0CONbits.TMR0ON = 0;*/
         
         //clear_LCD();
         //home_LCD();
         set_cursor_line_2();
         set_cursor_pos(7);
-        valeur_test = (get_Timer_Value());
-        INT_to_ASCII(valeur_test, 4);
-        LCD_DATA = 'H';
+        //valeur_test = (get_Timer_Value());
+        
+        if (PORTGbits.RG4 == 1) {
+            if (duty_cycle > 100) {duty_cycle = 100;}
+            else {duty_cycle += 5;}
+            Tempo(15);
+        }
+        if (PORTGbits.RG3 == 1) {
+            if (duty_cycle < 5) {duty_cycle = 0;}
+            else {duty_cycle -= 5;}
+            Tempo(15);
+        }
+        if (duty_cycle > 100) {duty_cycle = 100;}
+        CCPR1L = duty_cycle;
+        
+        
+        INT_to_ASCII(duty_cycle, 4);
+        LCD_DATA = '%';
         Tempo(2);
-        LCD_DATA = 'z';
+        LCD_DATA = ' ';
         Tempo(2);
         
         
         
-        Tempo(25);
+        
     }
     return;
 }

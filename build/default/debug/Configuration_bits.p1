@@ -1,85 +1,4 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"9 user.h
-[v _Init `(v ~T0 @X0 0 ef ]
-"23 LCD.h
-[v _init_LCD `(v ~T0 @X0 0 ef ]
-"3 I2C.h
-[v _I2C_Init `(v ~T0 @X0 0 ef ]
-"9 EUSART.h
-[v _tx_data `(v ~T0 @X0 0 ef1`uc ]
-"24 LCD.h
-[v _clear_LCD `(v ~T0 @X0 0 ef ]
-"25
-[v _home_LCD `(v ~T0 @X0 0 ef ]
-"29
-[v _set_cursor_line_2 `(v ~T0 @X0 0 ef ]
-"18
-[v _LCD_DATA `Fuc ~T0 @X0 0 e@1703938 ]
-"10 user.h
-[v _Tempo `(v ~T0 @X0 0 ef1`i ]
-"5 Timer.h
-[v _get_Timer_Value `(i ~T0 @X0 0 ef ]
-"30 LCD.h
-[v _INT_to_ASCII `(v ~T0 @X0 0 ef2`i`i ]
-"17638 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"17619
-[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-[s S652 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S652 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-[s S653 :1 `uc 1 ]
-[n S653 . LC0 ]
-[s S654 :1 `uc 1 :1 `uc 1 ]
-[n S654 . . LC1 ]
-[s S655 :2 `uc 1 :1 `uc 1 ]
-[n S655 . . LC2 ]
-[s S656 :3 `uc 1 :1 `uc 1 ]
-[n S656 . . LC3 ]
-[s S657 :4 `uc 1 :1 `uc 1 ]
-[n S657 . . LC4 ]
-[s S658 :5 `uc 1 :1 `uc 1 ]
-[n S658 . . LC5 ]
-[s S659 :6 `uc 1 :1 `uc 1 ]
-[n S659 . . LC6 ]
-[s S660 :7 `uc 1 :1 `uc 1 ]
-[n S660 . . LC7 ]
-[u S651 `S652 1 `S653 1 `S654 1 `S655 1 `S656 1 `S657 1 `S658 1 `S659 1 `S660 1 ]
-[n S651 . . . . . . . . . . ]
-"10305
-[v _LATCbits `VS651 ~T0 @X0 0 e@3979 ]
-"28 LCD.h
-[v _set_cursor_pos `(v ~T0 @X0 0 ef1`i ]
-[s S610 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S610 . RG0 RG1 RG2 RG3 RG4 RG5 ]
-[s S611 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S611 . CCP3 C3OUT C3INA C3INB C3INC ]
-[s S612 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S612 . PA3 TX2 RX2 PD3 PD1 ]
-[s S613 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S613 . . AN19 AN18 AN17 AN16 ]
-[s S614 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S614 . . CK2 DT2 CCP4 CCP5 ]
-[s S615 :4 `uc 1 :1 `uc 1 ]
-[n S615 . . T7CKI ]
-[s S616 :4 `uc 1 :1 `uc 1 ]
-[n S616 . . T5G ]
-[s S617 :4 `uc 1 :1 `uc 1 ]
-[n S617 . . RTCC ]
-[s S618 :1 `uc 1 :1 `uc 1 ]
-[n S618 . . C3OUTG ]
-[s S619 :6 `uc 1 :1 `uc 1 ]
-[n S619 . . RG6 ]
-[s S620 :7 `uc 1 :1 `uc 1 ]
-[n S620 . . RG7 ]
-[s S621 :5 `uc 1 :1 `uc 1 ]
-[n S621 . . RJPU ]
-[u S609 `S610 1 `S611 1 `S612 1 `S613 1 `S614 1 `S615 1 `S616 1 `S617 1 `S618 1 `S619 1 `S620 1 `S621 1 ]
-[n S609 . . . . . . . . . . . . . ]
-"9514 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _PORTGbits `VS609 ~T0 @X0 0 e@3974 ]
-"14510
-[v _CCPR1L `Vuc ~T0 @X0 0 e@4028 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9218,335 +9137,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-"5 user.h
-[v _valeur_test `i ~T0 @X0 1 e ]
-[; ;user.h: 5: int valeur_test;
-"6
-[v _periode `ui ~T0 @X0 1 e ]
-[i _periode
--> -> 100 `i `ui
-]
-[; ;user.h: 6: unsigned int periode = 100;
-"7
-[v _duty_cycle `ui ~T0 @X0 1 e ]
-[i _duty_cycle
--> -> 10 `i `ui
-]
-[; ;user.h: 7: unsigned int duty_cycle = 10;
-[; ;user.h: 9: void Init(void);
-[; ;user.h: 10: void Tempo(int val);
-[; ;user.h: 11: long map(long x, long in_min, long in_max, long out_min, long out_max);
-"5 get_clav.h
-[v _CLAVIER `Fuc ~T0 @X0 1 e@1572864 ]
-[; ;get_clav.h: 5: far unsigned char CLAVIER @ 0x180000;
-"7
-[v _val_clavier `uc ~T0 @X0 1 e ]
-[i _val_clavier
--> -> 0 `i `uc
-]
-[; ;get_clav.h: 7: unsigned char val_clavier = 0;
-[; ;get_clav.h: 9: void get_clav(void);
-[; ;get_clav.h: 10: unsigned char clav_to_ascii(void);
-[; ;LCD.h: 18: extern far unsigned char LCD_DATA @ 0x1A0002;
-[; ;LCD.h: 19: extern far unsigned char LCD_FUNC @ 0x1A0000;
-"21 LCD.h
-[v _buffer_ASCII `i ~T0 @X0 -> 6 `i e ]
-[; ;LCD.h: 21: int buffer_ASCII[6];
-[; ;LCD.h: 23: void init_LCD(void);
-[; ;LCD.h: 24: void clear_LCD (void);
-[; ;LCD.h: 25: void home_LCD (void);
-[; ;LCD.h: 26: void shift_cursor_right (void);
-[; ;LCD.h: 27: void shift_cursor_left (void);
-[; ;LCD.h: 28: void set_cursor_pos (int position);
-[; ;LCD.h: 29: void set_cursor_line_2 (void);
-[; ;LCD.h: 30: void INT_to_ASCII (int valeur_a_conv, int lenght_value);
-"1 system.h
-[v _clavier_a_traiter `ui ~T0 @X0 1 e ]
-[; ;system.h: 1: unsigned int clavier_a_traiter;
-"3 Interrupt.h
-[v _clav_a_traiter `i ~T0 @X0 1 e ]
-[i _clav_a_traiter
--> 0 `i
-]
-[; ;Interrupt.h: 3: int clav_a_traiter = 0;
-"4
-[v _char_recu `i ~T0 @X0 1 e ]
-[i _char_recu
--> 0 `i
-]
-[; ;Interrupt.h: 4: int char_recu = 0;
-"5
-[v _char_transmis `i ~T0 @X0 1 e ]
-[i _char_transmis
--> 0 `i
-]
-[; ;Interrupt.h: 5: int char_transmis = 0;
-[; ;Interrupt.h: 11: void high_priority interrupt clavier_appuyer (void);
-[; ;Interrupt.h: 13: void low_priority interrupt UART (void);
-[; ;CAN.h: 5: int get_CAN(void);
-[; ;I2C.h: 3: void I2C_Init(void);
-[; ;I2C.h: 4: void I2C_Write(int VAL);
-"3 EUSART.h
-[v _data1 `uc ~T0 @X0 1 e ]
-[; ;EUSART.h: 3: unsigned char data1;
-"4
-[v _TX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[i _TX_BUFFER
-:U ..
--> 97 `c
--> 98 `c
--> 99 `c
--> 100 `c
--> 101 `c
--> 0 `c
-..
-]
-[; ;EUSART.h: 4: unsigned char TX_BUFFER[20] = "abcde";
-"5
-[v _TX_INDEX `i ~T0 @X0 1 e ]
-[i _TX_INDEX
--> 0 `i
-]
-[; ;EUSART.h: 5: int TX_INDEX = 0;
-"6
-[v _RX_BUFFER `uc ~T0 @X0 -> 20 `i e ]
-[; ;EUSART.h: 6: unsigned char RX_BUFFER[20];
-"7
-[v _RX_INDEX `i ~T0 @X0 1 e ]
-[i _RX_INDEX
--> 0 `i
-]
-[; ;EUSART.h: 7: int RX_INDEX = 0;
-[; ;EUSART.h: 9: void tx_data(unsigned char data);
-[; ;EUSART.h: 10: unsigned char rx_data(void);
-[; ;EUSART.h: 11: void tx_chaine (void);
-[; ;EUSART.h: 12: void rx_chaine (void);
-[; ;EUSART.h: 13: void tx_int (unsigned char valeur_a_transmettre);
-[; ;Timer.h: 5: int get_Timer_Value(void);
-"13 main.c
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 13: void main(void) {
-[e :U _main ]
-[f ]
-[; ;main.c: 14: Init();
+"7 Configuration_bits.c
+[p x INTOSCSEL=HIGH ]
+[p x SOSCSEL=HIGH ]
+[p x XINST=OFF ]
+[p x RETEN=ON ]
+"8
+[p x IESO=OFF ]
+[p x FOSC=HS1 ]
+[p x FCMEN=OFF ]
+[p x PLLCFG=OFF ]
+"9
+[p x BOREN=OFF ]
+[p x BORPWR=ZPBORMV ]
+[p x BORV=0 ]
+[p x PWRTEN=OFF ]
+"10
+[p x WDTPS=1 ]
+[p x WDTEN=OFF ]
+"11
+[p x RTCOSC=SOSCREF ]
+[p x BW=8 ]
+[p x EASHFT=OFF ]
+[p x WAIT=ON ]
+[p x ABW=XM20 ]
+"12
+[p x CCP2MX=PORTC ]
+[p x ECCPMX=PORTE ]
+[p x MSSPMSK=MSK7 ]
+[p x MCLRE=ON ]
+"13
+[p x DEBUG=OFF ]
+[p x STVREN=ON ]
+[p x BBSIZ=BB1K ]
 "14
-[e ( _Init ..  ]
-[; ;main.c: 15: init_LCD();
+[p x CP5=OFF ]
+[p x CP6=OFF ]
+[p x CP7=OFF ]
+[p x CP0=OFF ]
+[p x CP1=OFF ]
+[p x CP2=OFF ]
+[p x CP3=OFF ]
+[p x CP4=OFF ]
 "15
-[e ( _init_LCD ..  ]
-[; ;main.c: 16: I2C_Init();
+[p x CPD=OFF ]
+[p x CPB=OFF ]
 "16
-[e ( _I2C_Init ..  ]
+[p x WRT0=OFF ]
+[p x WRT1=OFF ]
+[p x WRT2=OFF ]
+[p x WRT3=OFF ]
+[p x WRT4=OFF ]
+[p x WRT5=OFF ]
+[p x WRT6=OFF ]
+[p x WRT7=OFF ]
+"17
+[p x WRTB=OFF ]
+[p x WRTC=OFF ]
+[p x WRTD=OFF ]
 "18
-[v _UART_Buffer `i ~T0 @X0 -> 3 `i a ]
-[; ;main.c: 18: int UART_Buffer[3];
-[; ;main.c: 20: tx_data('S');
-"20
-[e ( _tx_data (1 -> -> 83 `ui `uc ]
-[; ;main.c: 21: tx_data('e');
-"21
-[e ( _tx_data (1 -> -> 101 `ui `uc ]
-[; ;main.c: 22: tx_data('r');
-"22
-[e ( _tx_data (1 -> -> 114 `ui `uc ]
-[; ;main.c: 23: tx_data('i');
-"23
-[e ( _tx_data (1 -> -> 105 `ui `uc ]
-[; ;main.c: 24: tx_data('a');
-"24
-[e ( _tx_data (1 -> -> 97 `ui `uc ]
-[; ;main.c: 25: tx_data('l');
-"25
-[e ( _tx_data (1 -> -> 108 `ui `uc ]
-[; ;main.c: 26: tx_data(0x0D);
-"26
-[e ( _tx_data (1 -> -> 13 `i `uc ]
-[; ;main.c: 27: tx_data(0x0A);
-"27
-[e ( _tx_data (1 -> -> 10 `i `uc ]
-[; ;main.c: 29: clear_LCD();
-"29
-[e ( _clear_LCD ..  ]
-[; ;main.c: 30: home_LCD();
-"30
-[e ( _home_LCD ..  ]
-[; ;main.c: 31: set_cursor_line_2();
-"31
-[e ( _set_cursor_line_2 ..  ]
-[; ;main.c: 32: LCD_DATA = 'S';
-"32
-[e = _LCD_DATA -> -> 83 `ui `uc ]
-[; ;main.c: 33: Tempo(2);
-"33
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 34: LCD_DATA = '_';
-"34
-[e = _LCD_DATA -> -> 95 `ui `uc ]
-[; ;main.c: 35: Tempo(2);
-"35
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 36: LCD_DATA = 'V';
-"36
-[e = _LCD_DATA -> -> 86 `ui `uc ]
-[; ;main.c: 37: Tempo(2);
-"37
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 38: LCD_DATA = 'E';
-"38
-[e = _LCD_DATA -> -> 69 `ui `uc ]
-[; ;main.c: 39: Tempo(2);
-"39
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 40: LCD_DATA = 'N';
-"40
-[e = _LCD_DATA -> -> 78 `ui `uc ]
-[; ;main.c: 41: Tempo(2);
-"41
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 42: LCD_DATA = 'T';
-"42
-[e = _LCD_DATA -> -> 84 `ui `uc ]
-[; ;main.c: 43: Tempo(2);
-"43
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 44: LCD_DATA = '=';
-"44
-[e = _LCD_DATA -> -> 61 `ui `uc ]
-[; ;main.c: 45: Tempo(2);
-"45
-[e ( _Tempo (1 -> 2 `i ]
-"50
-[v _data_test `uc ~T0 @X0 1 a ]
-[; ;main.c: 50: unsigned char data_test;
-[; ;main.c: 53: while(1){
-"53
-[e :U 1240 ]
-{
-[; ;main.c: 73: if (clavier_a_traiter == 1) {
-"73
-[e $ ! == _clavier_a_traiter -> -> 1 `i `ui 1242  ]
-{
-[; ;main.c: 94: clear_LCD();
-"94
-[e ( _clear_LCD ..  ]
-[; ;main.c: 95: home_LCD();
-"95
-[e ( _home_LCD ..  ]
-[; ;main.c: 96: valeur_test = get_Timer_Value();
-"96
-[e = _valeur_test ( _get_Timer_Value ..  ]
-[; ;main.c: 97: INT_to_ASCII(valeur_test, 4);
-"97
-[e ( _INT_to_ASCII (2 , _valeur_test -> 4 `i ]
-[; ;main.c: 98: TMR0H = 0;
-"98
-[e = _TMR0H -> -> 0 `i `uc ]
-[; ;main.c: 99: TMR0L = 0;
-"99
-[e = _TMR0L -> -> 0 `i `uc ]
-[; ;main.c: 100: clavier_a_traiter = 0;
-"100
-[e = _clavier_a_traiter -> -> 0 `i `ui ]
-"101
-}
-[e :U 1242 ]
-[; ;main.c: 101: }
-[; ;main.c: 128: LATCbits.LATC2 = 1;
-"128
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 158: set_cursor_line_2();
-"158
-[e ( _set_cursor_line_2 ..  ]
-[; ;main.c: 159: set_cursor_pos(7);
-"159
-[e ( _set_cursor_pos (1 -> 7 `i ]
-[; ;main.c: 162: if (PORTGbits.RG4 == 1) {
-"162
-[e $ ! == -> . . _PORTGbits 0 4 `i -> 1 `i 1243  ]
-{
-[; ;main.c: 163: if (duty_cycle > 100) {duty_cycle = 100;}
-"163
-[e $ ! > _duty_cycle -> -> 100 `i `ui 1244  ]
-{
-[e = _duty_cycle -> -> 100 `i `ui ]
-}
-[e $U 1245  ]
-"164
-[e :U 1244 ]
-[; ;main.c: 164: else {duty_cycle += 5;}
-{
-[e =+ _duty_cycle -> -> 5 `i `ui ]
-}
-[e :U 1245 ]
-[; ;main.c: 165: Tempo(15);
-"165
-[e ( _Tempo (1 -> 15 `i ]
-"166
-}
-[e :U 1243 ]
-[; ;main.c: 166: }
-[; ;main.c: 167: if (PORTGbits.RG3 == 1) {
-"167
-[e $ ! == -> . . _PORTGbits 0 3 `i -> 1 `i 1246  ]
-{
-[; ;main.c: 168: if (duty_cycle < 5) {duty_cycle = 0;}
-"168
-[e $ ! < _duty_cycle -> -> 5 `i `ui 1247  ]
-{
-[e = _duty_cycle -> -> 0 `i `ui ]
-}
-[e $U 1248  ]
-"169
-[e :U 1247 ]
-[; ;main.c: 169: else {duty_cycle -= 5;}
-{
-[e =- _duty_cycle -> -> 5 `i `ui ]
-}
-[e :U 1248 ]
-[; ;main.c: 170: Tempo(15);
-"170
-[e ( _Tempo (1 -> 15 `i ]
-"171
-}
-[e :U 1246 ]
-[; ;main.c: 171: }
-[; ;main.c: 172: if (duty_cycle > 100) {duty_cycle = 100;}
-"172
-[e $ ! > _duty_cycle -> -> 100 `i `ui 1249  ]
-{
-[e = _duty_cycle -> -> 100 `i `ui ]
-}
-[e :U 1249 ]
-[; ;main.c: 173: CCPR1L = duty_cycle;
-"173
-[e = _CCPR1L -> _duty_cycle `uc ]
-[; ;main.c: 176: INT_to_ASCII(duty_cycle, 4);
-"176
-[e ( _INT_to_ASCII (2 , -> _duty_cycle `i -> 4 `i ]
-[; ;main.c: 177: LCD_DATA = '%';
-"177
-[e = _LCD_DATA -> -> 37 `ui `uc ]
-[; ;main.c: 178: Tempo(2);
-"178
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 179: LCD_DATA = ' ';
-"179
-[e = _LCD_DATA -> -> 32 `ui `uc ]
-[; ;main.c: 180: Tempo(2);
-"180
-[e ( _Tempo (1 -> 2 `i ]
-"185
-}
-[e :U 1239 ]
-"53
-[e $U 1240  ]
-[e :U 1241 ]
-[; ;main.c: 185: }
-[; ;main.c: 186: return;
-"186
-[e $UE 1238  ]
-[; ;main.c: 187: }
-"187
-[e :UE 1238 ]
-}
+[p x EBRT0=OFF ]
+[p x EBRT1=OFF ]
+[p x EBRT2=OFF ]
+[p x EBRT3=OFF ]
+[p x EBRT4=OFF ]
+[p x EBRT5=OFF ]
+[p x EBRT6=OFF ]
+[p x EBRT7=OFF ]
+"19
+[p x EBRTB=OFF ]

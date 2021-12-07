@@ -11925,7 +11925,7 @@ extern void _delay3(unsigned char);
 
 # 5 "user.h"
 int valeur_test;
-unsigned int periode = 100;
+unsigned int periode = 300;
 unsigned int duty_cycle = 10;
 
 void Init(void);

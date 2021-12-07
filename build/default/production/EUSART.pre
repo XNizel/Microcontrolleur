@@ -11953,6 +11953,8 @@ void INT_to_ASCII (int valeur_a_conv, int lenght_value);
 
 # 5 "user.h"
 int valeur_test;
+unsigned int periode = 100;
+unsigned int duty_cycle = 10;
 
 void Init(void);
 void Tempo(int val);

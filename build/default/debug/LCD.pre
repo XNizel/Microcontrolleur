@@ -1,5 +1,5 @@
 
-# 1 "Timer.c"
+# 1 "LCD.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11925,25 +11925,92 @@ extern void _delay3(unsigned char);
 
 # 5 "user.h"
 int valeur_test;
-unsigned int periode = 100;
+unsigned int periode = 300;
 unsigned int duty_cycle = 10;
 
 void Init(void);
 void Tempo(int val);
 long map(long x, long in_min, long in_max, long out_min, long out_max);
 
-# 5 "Timer.h"
-int get_Timer_Value(void);
+# 18 "LCD.h"
+extern far unsigned char LCD_DATA @ 0x1A0002;
+extern far unsigned char LCD_FUNC @ 0x1A0000;
 
-# 5 "Timer.c"
-int get_Timer_Value(void){
-int timer_valueL = 0;
-int timer_value = 0;
-timer_valueL = TMR0L;
+int buffer_ASCII[6];
 
-timer_value = TMR0H;
-timer_value = timer_value << 8;
-timer_value = timer_value + timer_valueL;
-return timer_value;
+void init_LCD(void);
+void clear_LCD (void);
+void home_LCD (void);
+void shift_cursor_right (void);
+void shift_cursor_left (void);
+void set_cursor_pos (int position);
+void set_cursor_line_2 (void);
+void INT_to_ASCII (int valeur_a_conv, int lenght_value);
+
+# 6 "LCD.c"
+void init_LCD(void){
+Tempo(100);
+LCD_FUNC = 0x38;
+Tempo(5);
+LCD_FUNC = 0x38;
+Tempo(1);
+LCD_FUNC = 0x38;
+Tempo(1);
+LCD_FUNC = 0x38;
+Tempo(1);
+LCD_FUNC = 0x14;
+Tempo(1);
+LCD_FUNC = 0x0E;
+Tempo(1);
+LCD_FUNC = 0x06;
+Tempo(2);
+LCD_FUNC = 0x02;
+Tempo(2);
+LCD_FUNC = 0x01;
+}
+
+void clear_LCD (void) {
+LCD_FUNC = 0x01;
+Tempo(2);
+}
+
+void home_LCD (void) {
+LCD_FUNC = 0x02;
+Tempo(2);
+}
+
+void shift_cursor_right (void) {
+LCD_FUNC = 0x14;
+Tempo(2);
+}
+
+void shift_cursor_left (void) {
+LCD_FUNC = 0x10;
+Tempo(2);
+}
+
+void set_cursor_line_2 (void) {
+LCD_FUNC = 0xC0;
+Tempo(2);
+}
+
+void set_cursor_pos (int position) {
+for (int i=0; i<=position; i++) {
+shift_cursor_right();
+}
+Tempo(2);
+}
+
+void INT_to_ASCII (int valeur_a_conv, int lenght_value){
+
+for (int i=0; i<=lenght_value; i++) {
+buffer_ASCII[i] = valeur_a_conv % 10;
+valeur_a_conv = valeur_a_conv / 10;
+}
+
+for (int i = lenght_value; i >= 0; i--){
+LCD_DATA = (buffer_ASCII[i]) + 0x30;
+while((LCD_FUNC & 0x80) == 0x80);
+}
 }
 

@@ -1,5 +1,5 @@
 
-# 1 "Timer.c"
+# 1 "Configuration_bits.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,27 +11923,18 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 5 "user.h"
-int valeur_test;
-unsigned int periode = 100;
-unsigned int duty_cycle = 10;
 
-void Init(void);
-void Tempo(int val);
-long map(long x, long in_min, long in_max, long out_min, long out_max);
-
-# 5 "Timer.h"
-int get_Timer_Value(void);
-
-# 5 "Timer.c"
-int get_Timer_Value(void){
-int timer_valueL = 0;
-int timer_value = 0;
-timer_valueL = TMR0L;
-
-timer_value = TMR0H;
-timer_value = timer_value << 8;
-timer_value = timer_value + timer_valueL;
-return timer_value;
-}
-
+# 7 "Configuration_bits.c"
+#pragma config CONFIG1L = 0x1D
+#pragma config CONFIG1H = 0x03
+#pragma config CONFIG2L = 0x61
+#pragma config CONFIG2H = 0x00
+#pragma config CONFIG3L = 0x01
+#pragma config CONFIG3H = 0x8B
+#pragma config CONFIG4L = 0x81
+#pragma config CONFIG5L = 0xFF
+#pragma config CONFIG5H = 0xC0
+#pragma config CONFIG6L = 0xFF
+#pragma config CONFIG6H = 0xE0
+#pragma config CONFIG7L = 0xFF
+#pragma config CONFIG7H = 0x40

@@ -1,5 +1,5 @@
 
-# 1 "Timer.c"
+# 1 "get_clav.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,27 +11923,30 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 5 "user.h"
-int valeur_test;
-unsigned int periode = 100;
-unsigned int duty_cycle = 10;
+# 5 "get_clav.h"
+far unsigned char CLAVIER @ 0x180000;
 
-void Init(void);
-void Tempo(int val);
-long map(long x, long in_min, long in_max, long out_min, long out_max);
+unsigned char val_clavier = 0;
 
-# 5 "Timer.h"
-int get_Timer_Value(void);
+void get_clav(void);
+unsigned char clav_to_ascii(void);
 
-# 5 "Timer.c"
-int get_Timer_Value(void){
-int timer_valueL = 0;
-int timer_value = 0;
-timer_valueL = TMR0L;
+# 9 "get_clav.c"
+void get_clav(void) {
 
-timer_value = TMR0H;
-timer_value = timer_value << 8;
-timer_value = timer_value + timer_valueL;
-return timer_value;
+val_clavier = (CLAVIER + 0x30);
 }
 
+# 21
+unsigned char clav_to_ascii(void) {
+unsigned char val = 1;
+
+if (val >= 0 || val <= 9) {
+val = val + 0x30;
+}
+else if (val >= 10 || val <= 15) {
+val = val + 0x41;
+}
+
+return val;
+}
