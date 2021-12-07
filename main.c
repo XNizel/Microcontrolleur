@@ -132,7 +132,7 @@ void main(void) {
         valeur_test = get_Timer_Value();
         INT_to_ASCII(valeur_test);*/
         
-        
+        /*
         T0CONbits.TMR0ON = 0;
         while (PORTBbits.RB1 == 1) {
             
@@ -144,20 +144,25 @@ void main(void) {
         while (PORTBbits.RB1 == 1) {
             
         }
+        T0CONbits.TMR0ON = 0;*/
+        
+        TMR0H = 0;
+        TMR0L = 0;
+        
+        T0CONbits.TMR0ON = 1;
+        Tempo(1000);
         T0CONbits.TMR0ON = 0;
         
         //clear_LCD();
         //home_LCD();
         set_cursor_line_2();
         set_cursor_pos(7);
-        valeur_test = (get_Timer_Value() * 46.3);
+        valeur_test = (get_Timer_Value());
         INT_to_ASCII(valeur_test, 4);
-        LCD_DATA = 'u';
+        LCD_DATA = 'H';
         Tempo(2);
-        LCD_DATA = 's';
+        LCD_DATA = 'z';
         Tempo(2);
-        TMR0H = 0;
-        TMR0L = 0;
         
         
         

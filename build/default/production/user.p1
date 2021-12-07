@@ -9435,15 +9435,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 69: T0CONbits.T08BIT = 0;
 "69
 [e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 70: T0CONbits.T0CS = 0;
+[; ;user.c: 70: T0CONbits.T0CS = 1;
 "70
-[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[e = . . _T0CONbits 0 3 -> -> 1 `i `uc ]
 [; ;user.c: 71: T0CONbits.T0SE = 0;
 "71
 [e = . . _T0CONbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 72: T0CONbits.PSA = 0;
+[; ;user.c: 72: T0CONbits.PSA = 1;
 "72
-[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[e = . . _T0CONbits 0 1 -> -> 1 `i `uc ]
 [; ;user.c: 73: T0CONbits.T0PS = 0x6;
 "73
 [e = . . _T0CONbits 0 0 -> -> 6 `i `uc ]

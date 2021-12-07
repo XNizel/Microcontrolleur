@@ -11985,9 +11985,9 @@ INTCONbits.INT0F = 0;
 
 # 69
 T0CONbits.T08BIT = 0;
-T0CONbits.T0CS = 0;
+T0CONbits.T0CS = 1;
 T0CONbits.T0SE = 0;
-T0CONbits.PSA = 0;
+T0CONbits.PSA = 1;
 T0CONbits.T0PS = 0x6;
 
 }

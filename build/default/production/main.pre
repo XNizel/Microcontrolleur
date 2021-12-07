@@ -12048,32 +12048,24 @@ clavier_a_traiter = 0;
 # 128
 LATCbits.LATC2 = 1;
 
-# 136
-T0CONbits.TMR0ON = 0;
-while (PORTBbits.RB1 == 1) {
+# 149
+TMR0H = 0;
+TMR0L = 0;
 
-}
-while (PORTBbits.RB1 == 0) {
-}
 T0CONbits.TMR0ON = 1;
-
-while (PORTBbits.RB1 == 1) {
-
-}
+Tempo(1000);
 T0CONbits.TMR0ON = 0;
 
 
 
 set_cursor_line_2();
 set_cursor_pos(7);
-valeur_test = (get_Timer_Value() * 46.3);
+valeur_test = (get_Timer_Value());
 INT_to_ASCII(valeur_test, 4);
-LCD_DATA = 'u';
+LCD_DATA = 'H';
 Tempo(2);
-LCD_DATA = 's';
+LCD_DATA = 'z';
 Tempo(2);
-TMR0H = 0;
-TMR0L = 0;
 
 
 

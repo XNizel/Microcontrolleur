@@ -67,9 +67,9 @@ void Init() {
     //  Configuration du timer
     
     T0CONbits.T08BIT = 0;     //   Timer en 16bits
-    T0CONbits.T0CS = 0;       //  Clk interne FOSC/4
+    T0CONbits.T0CS = 1;       //  Clk interne FOSC/4
     T0CONbits.T0SE = 0;       //  Detction de front montant
-    T0CONbits.PSA = 0;
+    T0CONbits.PSA = 1;
     T0CONbits.T0PS = 0x6;     //  Div par 128  1 tick toutes les 46,3us  //2,89us
     
 }

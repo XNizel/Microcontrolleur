@@ -56,22 +56,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1106 . . . ]
 "17564
 [v _T0CONbits `VS1106 ~T0 @X0 0 e@4053 ]
-[s S555 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S555 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-[s S556 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S556 . INT0 INT1 INT2 INT3 KBI0 KBI1 KBI2 KBI3 ]
-[s S557 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S557 . FLT0 . CTED1 CTED2 . T3CKI ]
-[s S558 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S558 . . CCP2_P2A . T1G ]
-[s S559 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S559 . . PGM PGC PGD ]
-[s S560 :3 `uc 1 :1 `uc 1 ]
-[n S560 . . CCP2_PA2 ]
-[u S554 `S555 1 `S556 1 `S557 1 `S558 1 `S559 1 `S560 1 ]
-[n S554 . . . . . . . ]
-"8296
-[v _PORTBbits `VS554 ~T0 @X0 0 e@3969 ]
 "28 LCD.h
 [v _set_cursor_pos `(v ~T0 @X0 0 ef1`i ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
@@ -9437,95 +9421,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 128: LATCbits.LATC2 = 1;
 "128
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 136: T0CONbits.TMR0ON = 0;
-"136
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 137: while (PORTBbits.RB1 == 1) {
-"137
-[e $U 1243  ]
-[e :U 1244 ]
-{
-"139
-}
-[e :U 1243 ]
-"137
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 1244  ]
-[e :U 1245 ]
-[; ;main.c: 139: }
-[; ;main.c: 140: while (PORTBbits.RB1 == 0) {
-"140
-[e $U 1246  ]
-[e :U 1247 ]
-{
-"141
-}
-[e :U 1246 ]
-"140
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 1247  ]
-[e :U 1248 ]
-[; ;main.c: 141: }
-[; ;main.c: 142: T0CONbits.TMR0ON = 1;
-"142
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 144: while (PORTBbits.RB1 == 1) {
-"144
-[e $U 1249  ]
-[e :U 1250 ]
-{
-"146
-}
-[e :U 1249 ]
-"144
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 1250  ]
-[e :U 1251 ]
-[; ;main.c: 146: }
-[; ;main.c: 147: T0CONbits.TMR0ON = 0;
-"147
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 151: set_cursor_line_2();
-"151
-[e ( _set_cursor_line_2 ..  ]
-[; ;main.c: 152: set_cursor_pos(7);
-"152
-[e ( _set_cursor_pos (1 -> 7 `i ]
-[; ;main.c: 153: valeur_test = (get_Timer_Value() * 46.3);
-"153
-[e = _valeur_test -> * -> ( _get_Timer_Value ..  `d .46.3 `i ]
-[; ;main.c: 154: INT_to_ASCII(valeur_test, 4);
-"154
-[e ( _INT_to_ASCII (2 , _valeur_test -> 4 `i ]
-[; ;main.c: 155: LCD_DATA = 'u';
-"155
-[e = _LCD_DATA -> -> 117 `ui `uc ]
-[; ;main.c: 156: Tempo(2);
-"156
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 157: LCD_DATA = 's';
-"157
-[e = _LCD_DATA -> -> 115 `ui `uc ]
-[; ;main.c: 158: Tempo(2);
-"158
-[e ( _Tempo (1 -> 2 `i ]
-[; ;main.c: 159: TMR0H = 0;
-"159
+[; ;main.c: 149: TMR0H = 0;
+"149
 [e = _TMR0H -> -> 0 `i `uc ]
-[; ;main.c: 160: TMR0L = 0;
-"160
+[; ;main.c: 150: TMR0L = 0;
+"150
 [e = _TMR0L -> -> 0 `i `uc ]
-[; ;main.c: 164: Tempo(25);
+[; ;main.c: 152: T0CONbits.TMR0ON = 1;
+"152
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 153: Tempo(1000);
+"153
+[e ( _Tempo (1 -> 1000 `i ]
+[; ;main.c: 154: T0CONbits.TMR0ON = 0;
+"154
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 158: set_cursor_line_2();
+"158
+[e ( _set_cursor_line_2 ..  ]
+[; ;main.c: 159: set_cursor_pos(7);
+"159
+[e ( _set_cursor_pos (1 -> 7 `i ]
+[; ;main.c: 160: valeur_test = (get_Timer_Value());
+"160
+[e = _valeur_test ( _get_Timer_Value ..  ]
+[; ;main.c: 161: INT_to_ASCII(valeur_test, 4);
+"161
+[e ( _INT_to_ASCII (2 , _valeur_test -> 4 `i ]
+[; ;main.c: 162: LCD_DATA = 'H';
+"162
+[e = _LCD_DATA -> -> 72 `ui `uc ]
+[; ;main.c: 163: Tempo(2);
+"163
+[e ( _Tempo (1 -> 2 `i ]
+[; ;main.c: 164: LCD_DATA = 'z';
 "164
-[e ( _Tempo (1 -> 25 `i ]
+[e = _LCD_DATA -> -> 122 `ui `uc ]
+[; ;main.c: 165: Tempo(2);
 "165
+[e ( _Tempo (1 -> 2 `i ]
+[; ;main.c: 169: Tempo(25);
+"169
+[e ( _Tempo (1 -> 25 `i ]
+"170
 }
 [e :U 1239 ]
 "53
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;main.c: 165: }
-[; ;main.c: 166: return;
-"166
+[; ;main.c: 170: }
+[; ;main.c: 171: return;
+"171
 [e $UE 1238  ]
-[; ;main.c: 167: }
-"167
+[; ;main.c: 172: }
+"172
 [e :UE 1238 ]
 }
